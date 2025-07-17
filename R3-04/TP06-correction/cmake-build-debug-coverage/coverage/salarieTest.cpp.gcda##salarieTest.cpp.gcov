@@ -1,0 +1,3967 @@
+        -:    0:Source:C:/Users/ilyes/R3-04/TP06-correction/salarieTest.cpp
+        -:    0:Graph:C:\Users\ilyes\R3-04\TP06-correction\cmake-build-debug-coverage\CMakeFiles\salarieTest.dir\salarieTest.cpp.gcno
+        -:    0:Data:C:\Users\ilyes\R3-04\TP06-correction\cmake-build-debug-coverage\CMakeFiles\salarieTest.dir\salarieTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "gtest/gtest.h"
+        -:    2:#include <map>
+        -:    3:#include "Salarie.h"
+        -:    4:#include "SalarieException.h"
+        -:    5:using namespace std;
+        -:    6:
+        4:    7:TEST(SalarieTest, Constructeur) {
+        -:    8:    // Test noms incorrects lèvent NomIncorrectException
+       11:    9:    for (const string &nom: {"", "Oss117", "James Bond", "-martin","martin-"}) {
+      10*:   10:        EXPECT_THROW(Salarie s(nom), NomIncorrectException)
+       5*:   11:                            << "Const. avec nom=\"" << nom << "\" lève NomIncorrectException";
+        5:   12:    }
+        -:   13:    // Test noms corrects ne lèvent pas d'exception
+        5:   14:    for (const string &nom: {"martin", "Duran-duran"}) {
+       2*:   15:        EXPECT_NO_THROW(Salarie s(nom))
+       2*:   16:                            << "Const. avec nom=\"" << nom << "\" ne lève pas d'exception";
+        2:   17:    }
+        -:   18:    // Test numéroSS invalides lèvent NumeroIncorrectException
+        7:   19:    for (const string &numeroSS: {"12345", "12345678901234", "123456789012A"}) {
+      12*:   20:        EXPECT_THROW(Salarie s("Toto", numeroSS), NumeroIncorrectException)
+       3*:   21:                            << "Const. avec numéroSS=\"" << numeroSS << "\" lève NumeroIncorrectException";
+        3:   22:    }
+        -:   23:    // Test numéroSS à 13 chiffres ne commençant pas par 1 ou 2 lèvent NumeroIncorrectException
+       17:   24:    for (const string & i: {"0", "3", "4", "5", "6", "7", "8", "9"}) {
+      40*:   25:        EXPECT_THROW(Salarie s("Toto", i + "234567890123"), NumeroIncorrectException)
+       8*:   26:                            << "Const. numéroSS débutant par " << i << " lève NumeroIncorrectException";
+        8:   27:    }
+        -:   28:    // Test numéros valides ne lèvent pas d'exception
+       5*:   29:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123"))
+       1*:   30:                        << "Const. numéroSS débutant par 1 ne lève pas d'exception";
+       5*:   31:    EXPECT_NO_THROW(Salarie s("Toto", "2234567890123"))
+       1*:   32:                        << "Const. numéroSS débutant par 2 ne lève pas d'exception";
+        -:   33:    // Test salaires incorrect lèvent SalaireIncorrectException
+       6*:   34:    EXPECT_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC - 0.1f), SalaireIncorrectException)
+       1*:   35:                        << "Const. salaire trop petit lève SalaireIncorrectException";
+       6*:   36:    EXPECT_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC * Salarie::COEFF_SMIC + 0.1f),
+        -:   37:                 SalaireIncorrectException)
+       1*:   38:                        << "Const. salaire trop grand lève SalaireIncorrectException";
+        -:   39:    // Test salaires corrects ne lèvent pas d'exception
+       5*:   40:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC))
+       1*:   41:                        << "Const. salaire min ne lève pas d'exception";
+       5*:   42:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC * Salarie::COEFF_SMIC))
+       1*:   43:                        << "Const. salaire max ne lève pas d'exception";
+       5*:   44:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123",
+        -:   45:                            (Salarie::SMIC + Salarie::SMIC * Salarie::COEFF_SMIC) / 2.0f))
+       1*:   46:                        << "Const. salaire median ne lève pas d'exception";
+        -:   47:    // test construction bien réalisée
+        3:   48:    string nom = "MARTIN", numeroSS = "1234567890123";
+        1:   49:    float salaire = Salarie::SMIC;
+        1:   50:    Salarie s(nom, numeroSS, salaire);
+       1*:   51:    ASSERT_EQ(nom, s.getNom()) << "Const. Nom ok";
+       1*:   52:    ASSERT_EQ(numeroSS, s.getNumeroSS()) << "Const. Numero SS ok";
+       1*:   53:    ASSERT_FLOAT_EQ(salaire, s.getSalaireMensuel()) << "Const. Salaire ok";
+        -:   54:}
+------------------
+_ZN29SalarieTest_Constructeur_TestC1Ev:
+function _ZN29SalarieTest_Constructeur_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:    7:TEST(SalarieTest, Constructeur) {
+        1:    7-block  0
+call    0 returned 1
+------------------
+_ZN29SalarieTest_Constructeur_TestD0Ev:
+function _ZN29SalarieTest_Constructeur_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:    7:TEST(SalarieTest, Constructeur) {
+        1:    7-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN29SalarieTest_Constructeur_TestD1Ev:
+function _ZN29SalarieTest_Constructeur_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:    7:TEST(SalarieTest, Constructeur) {
+        1:    7-block  0
+call    0 returned 1
+------------------
+_ZN29SalarieTest_Constructeur_Test8TestBodyEv:
+function _ZN29SalarieTest_Constructeur_Test8TestBodyEv called 1 returned 100% blocks executed 31%
+        1:    7:TEST(SalarieTest, Constructeur) {
+        -:    8:    // Test noms incorrects lèvent NomIncorrectException
+       11:    9:    for (const string &nom: {"", "Oss117", "James Bond", "-martin","martin-"}) {
+        1:    9-block  0
+call    0 returned 1
+call    1 returned 1
+        5:    9-block  1
+call    2 returned 5
+branch  3 taken 5 (fallthrough)
+branch  4 taken 0 (throw)
+        5:    9-block  2
+call    5 returned 5
+        6:    9-block  3
+branch  6 taken 5
+branch  7 taken 1 (fallthrough)
+    $$$$$:    9-block  4
+      10*:   10:        EXPECT_THROW(Salarie s(nom), NomIncorrectException)
+call    0 returned 5
+call    1 returned 5
+branch  2 taken 5 (fallthrough)
+branch  3 taken 0
+        5:   10-block  0
+call    4 returned 5
+branch  5 taken 5 (fallthrough)
+branch  6 taken 0 (throw)
+        5:   10-block  1
+branch  7 taken 5 (fallthrough)
+branch  8 taken 0
+        5:   10-block  2
+call    9 returned 5
+branch 10 taken 0 (fallthrough)
+branch 11 taken 5 (throw)
+    %%%%%:   10-block  3
+call   12 never executed
+        5:   10-block  4
+branch 13 taken 0 (fallthrough)
+branch 14 taken 5
+    %%%%%:   10-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   10-block  6
+    %%%%%:   10-block  7
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   10-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   10-block  9
+call   27 never executed
+call   28 never executed
+        5:   10-block 10
+branch 29 taken 5
+branch 30 taken 0
+branch 31 taken 0
+        5:   10-block 11
+call   32 returned 5
+call   33 returned 5
+branch 34 taken 5 (fallthrough)
+branch 35 taken 0 (throw)
+    $$$$$:   10-block 12
+call   36 never executed
+call   37 never executed
+branch 38 never executed (fallthrough)
+branch 39 never executed (throw)
+    $$$$$:   10-block 13
+call   40 never executed
+branch 41 never executed (fallthrough)
+branch 42 never executed (throw)
+    $$$$$:   10-block 14
+call   43 never executed
+branch 44 never executed (fallthrough)
+branch 45 never executed (throw)
+    $$$$$:   10-block 15
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:   10-block 16
+call   50 never executed
+call   51 never executed
+branch 52 never executed (fallthrough)
+branch 53 never executed (throw)
+    $$$$$:   10-block 17
+call   54 never executed
+branch 55 never executed (fallthrough)
+branch 56 never executed (throw)
+    $$$$$:   10-block 18
+    $$$$$:   10-block 19
+call   57 never executed
+    $$$$$:   10-block 20
+call   58 never executed
+call   59 never executed
+branch 60 never executed (fallthrough)
+branch 61 never executed (throw)
+    $$$$$:   10-block 21
+    $$$$$:   10-block 22
+call   62 never executed
+branch 63 never executed (fallthrough)
+branch 64 never executed (throw)
+    $$$$$:   10-block 23
+call   65 never executed
+    $$$$$:   10-block 24
+    $$$$$:   10-block 25
+call   66 never executed
+    $$$$$:   10-block 26
+call   67 never executed
+    $$$$$:   10-block 27
+call   68 never executed
+    $$$$$:   10-block 28
+    $$$$$:   10-block 29
+call   69 never executed
+    $$$$$:   10-block 30
+       5*:   11:                            << "Const. avec nom=\"" << nom << "\" lève NomIncorrectException";
+    %%%%%:   11-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   11-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   11-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   11-block  3
+call    9 never executed
+        5:   11-block  4
+call   10 returned 5
+    $$$$$:   11-block  5
+call   11 never executed
+        5:   12:    }
+call    0 returned 5
+    $$$$$:   12-block  0
+call    1 never executed
+        -:   13:    // Test noms corrects ne lèvent pas d'exception
+        5:   14:    for (const string &nom: {"martin", "Duran-duran"}) {
+        1:   14-block  0
+call    0 returned 1
+call    1 returned 1
+        2:   14-block  1
+call    2 returned 2
+branch  3 taken 2 (fallthrough)
+branch  4 taken 0 (throw)
+        2:   14-block  2
+call    5 returned 2
+        3:   14-block  3
+branch  6 taken 2
+branch  7 taken 1 (fallthrough)
+    $$$$$:   14-block  4
+       2*:   15:        EXPECT_NO_THROW(Salarie s(nom))
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0
+        2:   15-block  0
+call    4 returned 2
+branch  5 taken 2 (fallthrough)
+branch  6 taken 0 (throw)
+        2:   15-block  1
+branch  7 taken 2 (fallthrough)
+branch  8 taken 0
+        2:   15-block  2
+call    9 returned 2
+branch 10 taken 2 (fallthrough)
+branch 11 taken 0 (throw)
+        2:   15-block  3
+call   12 returned 2
+    %%%%%:   15-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   15-block  5
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   15-block  6
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:   15-block  7
+call   23 never executed
+call   24 never executed
+call   25 never executed
+    $$$$$:   15-block  8
+branch 26 never executed
+branch 27 never executed
+    $$$$$:   15-block  9
+call   28 never executed
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    $$$$$:   15-block 10
+call   32 never executed
+branch 33 never executed (fallthrough)
+branch 34 never executed (throw)
+    $$$$$:   15-block 11
+call   35 never executed
+branch 36 never executed (fallthrough)
+branch 37 never executed (throw)
+    $$$$$:   15-block 12
+call   38 never executed
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   15-block 13
+call   42 never executed
+call   43 never executed
+branch 44 never executed (fallthrough)
+branch 45 never executed (throw)
+    $$$$$:   15-block 14
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   15-block 15
+    $$$$$:   15-block 16
+call   49 never executed
+    $$$$$:   15-block 17
+call   50 never executed
+call   51 never executed
+branch 52 never executed (fallthrough)
+branch 53 never executed (throw)
+    $$$$$:   15-block 18
+    $$$$$:   15-block 19
+call   54 never executed
+branch 55 never executed (fallthrough)
+branch 56 never executed (throw)
+    $$$$$:   15-block 20
+call   57 never executed
+    $$$$$:   15-block 21
+    $$$$$:   15-block 22
+call   58 never executed
+    $$$$$:   15-block 23
+call   59 never executed
+    $$$$$:   15-block 24
+call   60 never executed
+    $$$$$:   15-block 25
+call   61 never executed
+    $$$$$:   15-block 26
+    $$$$$:   15-block 27
+    $$$$$:   15-block 28
+call   62 never executed
+    $$$$$:   15-block 29
+       2*:   16:                            << "Const. avec nom=\"" << nom << "\" ne lève pas d'exception";
+    %%%%%:   16-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   16-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   16-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   16-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+        2:   16-block  4
+call   12 returned 2
+    $$$$$:   16-block  5
+call   13 never executed
+        2:   17:    }
+call    0 returned 2
+    $$$$$:   17-block  0
+call    1 never executed
+        -:   18:    // Test numéroSS invalides lèvent NumeroIncorrectException
+        7:   19:    for (const string &numeroSS: {"12345", "12345678901234", "123456789012A"}) {
+        1:   19-block  0
+call    0 returned 1
+call    1 returned 1
+        3:   19-block  1
+call    2 returned 3
+branch  3 taken 3 (fallthrough)
+branch  4 taken 0 (throw)
+        3:   19-block  2
+call    5 returned 3
+        4:   19-block  3
+branch  6 taken 3
+branch  7 taken 1 (fallthrough)
+    $$$$$:   19-block  4
+      12*:   20:        EXPECT_THROW(Salarie s("Toto", numeroSS), NumeroIncorrectException)
+call    0 returned 3
+call    1 returned 3
+branch  2 taken 3 (fallthrough)
+branch  3 taken 0
+        3:   20-block  0
+call    4 returned 3
+branch  5 taken 3 (fallthrough)
+branch  6 taken 0 (throw)
+        3:   20-block  1
+branch  7 taken 3 (fallthrough)
+branch  8 taken 0
+        3:   20-block  2
+        3:   20-block  3
+call    9 returned 3
+branch 10 taken 3 (fallthrough)
+branch 11 taken 0 (throw)
+        3:   20-block  4
+call   12 returned 3
+branch 13 taken 0 (fallthrough)
+branch 14 taken 3 (throw)
+    %%%%%:   20-block  5
+call   15 never executed
+call   16 never executed
+        3:   20-block  6
+branch 17 taken 0 (fallthrough)
+branch 18 taken 3
+    %%%%%:   20-block  7
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   20-block  8
+    %%%%%:   20-block  9
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   20-block 10
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    %%%%%:   20-block 11
+call   31 never executed
+call   32 never executed
+        3:   20-block 12
+call   33 returned 3
+        3:   20-block 13
+        3:   20-block 14
+        3:   20-block 15
+branch 34 taken 3
+branch 35 taken 0
+branch 36 taken 0
+        3:   20-block 16
+call   37 returned 3
+call   38 returned 3
+branch 39 taken 3 (fallthrough)
+branch 40 taken 0 (throw)
+    $$$$$:   20-block 17
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   20-block 18
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   20-block 19
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:   20-block 20
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:   20-block 21
+call   55 never executed
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   20-block 22
+call   59 never executed
+branch 60 never executed (fallthrough)
+branch 61 never executed (throw)
+    $$$$$:   20-block 23
+    $$$$$:   20-block 24
+call   62 never executed
+    $$$$$:   20-block 25
+call   63 never executed
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   20-block 26
+    $$$$$:   20-block 27
+call   67 never executed
+branch 68 never executed (fallthrough)
+branch 69 never executed (throw)
+    $$$$$:   20-block 28
+call   70 never executed
+    $$$$$:   20-block 29
+    $$$$$:   20-block 30
+call   71 never executed
+    $$$$$:   20-block 31
+call   72 never executed
+    $$$$$:   20-block 32
+call   73 never executed
+    $$$$$:   20-block 33
+    $$$$$:   20-block 34
+call   74 never executed
+    $$$$$:   20-block 35
+       3*:   21:                            << "Const. avec numéroSS=\"" << numeroSS << "\" lève NumeroIncorrectException";
+    %%%%%:   21-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   21-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   21-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   21-block  3
+call    9 never executed
+        3:   21-block  4
+call   10 returned 3
+    $$$$$:   21-block  5
+call   11 never executed
+        3:   22:    }
+call    0 returned 3
+    $$$$$:   22-block  0
+call    1 never executed
+        -:   23:    // Test numéroSS à 13 chiffres ne commençant pas par 1 ou 2 lèvent NumeroIncorrectException
+       17:   24:    for (const string & i: {"0", "3", "4", "5", "6", "7", "8", "9"}) {
+        1:   24-block  0
+call    0 returned 1
+call    1 returned 1
+        8:   24-block  1
+call    2 returned 8
+branch  3 taken 8 (fallthrough)
+branch  4 taken 0 (throw)
+        8:   24-block  2
+call    5 returned 8
+        9:   24-block  3
+branch  6 taken 8
+branch  7 taken 1 (fallthrough)
+    $$$$$:   24-block  4
+      40*:   25:        EXPECT_THROW(Salarie s("Toto", i + "234567890123"), NumeroIncorrectException)
+call    0 returned 8
+call    1 returned 8
+branch  2 taken 8 (fallthrough)
+branch  3 taken 0
+        8:   25-block  0
+call    4 returned 8
+branch  5 taken 8 (fallthrough)
+branch  6 taken 0 (throw)
+        8:   25-block  1
+branch  7 taken 8 (fallthrough)
+branch  8 taken 0
+        8:   25-block  2
+call    9 returned 8
+branch 10 taken 8 (fallthrough)
+branch 11 taken 0 (throw)
+        8:   25-block  3
+call   12 returned 8
+branch 13 taken 8 (fallthrough)
+branch 14 taken 0 (throw)
+        8:   25-block  4
+call   15 returned 8
+branch 16 taken 0 (fallthrough)
+branch 17 taken 8 (throw)
+    %%%%%:   25-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        8:   25-block  6
+branch 21 taken 0 (fallthrough)
+branch 22 taken 8
+    %%%%%:   25-block  7
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:   25-block  8
+    %%%%%:   25-block  9
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    %%%%%:   25-block 10
+call   32 never executed
+branch 33 never executed (fallthrough)
+branch 34 never executed (throw)
+    %%%%%:   25-block 11
+call   35 never executed
+call   36 never executed
+        8:   25-block 12
+call   37 returned 8
+        8:   25-block 13
+        8:   25-block 14
+        8:   25-block 15
+call   38 returned 8
+        8:   25-block 16
+        8:   25-block 17
+branch 39 taken 8
+branch 40 taken 0
+branch 41 taken 0
+        8:   25-block 18
+call   42 returned 8
+call   43 returned 8
+branch 44 taken 8 (fallthrough)
+branch 45 taken 0 (throw)
+    $$$$$:   25-block 19
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:   25-block 20
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   25-block 21
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   25-block 22
+call   56 never executed
+call   57 never executed
+branch 58 never executed (fallthrough)
+branch 59 never executed (throw)
+    $$$$$:   25-block 23
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   25-block 24
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   25-block 25
+    $$$$$:   25-block 26
+call   67 never executed
+    $$$$$:   25-block 27
+call   68 never executed
+call   69 never executed
+branch 70 never executed (fallthrough)
+branch 71 never executed (throw)
+    $$$$$:   25-block 28
+    $$$$$:   25-block 29
+call   72 never executed
+branch 73 never executed (fallthrough)
+branch 74 never executed (throw)
+    $$$$$:   25-block 30
+call   75 never executed
+    $$$$$:   25-block 31
+    $$$$$:   25-block 32
+call   76 never executed
+    $$$$$:   25-block 33
+call   77 never executed
+    $$$$$:   25-block 34
+call   78 never executed
+    $$$$$:   25-block 35
+    $$$$$:   25-block 36
+call   79 never executed
+    $$$$$:   25-block 37
+       8*:   26:                            << "Const. numéroSS débutant par " << i << " lève NumeroIncorrectException";
+    %%%%%:   26-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   26-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   26-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   26-block  3
+call    9 never executed
+        8:   26-block  4
+call   10 returned 8
+    $$$$$:   26-block  5
+call   11 never executed
+        8:   27:    }
+call    0 returned 8
+    $$$$$:   27-block  0
+call    1 never executed
+        -:   28:    // Test numéros valides ne lèvent pas d'exception
+       5*:   29:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123"))
+        1:   29-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   29-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   29-block  2
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   29-block  3
+        1:   29-block  4
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   29-block  5
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   29-block  6
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   29-block  7
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+    %%%%%:   29-block  8
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   29-block  9
+call   24 never executed
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   29-block 10
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    %%%%%:   29-block 11
+call   31 never executed
+call   32 never executed
+call   33 never executed
+    $$$$$:   29-block 12
+call   34 never executed
+    $$$$$:   29-block 13
+    $$$$$:   29-block 14
+    $$$$$:   29-block 15
+call   35 never executed
+    $$$$$:   29-block 16
+    $$$$$:   29-block 17
+    $$$$$:   29-block 18
+branch 36 never executed
+branch 37 never executed
+    $$$$$:   29-block 19
+call   38 never executed
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   29-block 20
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   29-block 21
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   29-block 22
+call   48 never executed
+call   49 never executed
+branch 50 never executed (fallthrough)
+branch 51 never executed (throw)
+    $$$$$:   29-block 23
+call   52 never executed
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   29-block 24
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   29-block 25
+    $$$$$:   29-block 26
+call   59 never executed
+    $$$$$:   29-block 27
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   29-block 28
+    $$$$$:   29-block 29
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   29-block 30
+call   67 never executed
+    $$$$$:   29-block 31
+    $$$$$:   29-block 32
+call   68 never executed
+    $$$$$:   29-block 33
+call   69 never executed
+    $$$$$:   29-block 34
+call   70 never executed
+    $$$$$:   29-block 35
+call   71 never executed
+    $$$$$:   29-block 36
+    $$$$$:   29-block 37
+    $$$$$:   29-block 38
+call   72 never executed
+    $$$$$:   29-block 39
+       1*:   30:                        << "Const. numéroSS débutant par 1 ne lève pas d'exception";
+    %%%%%:   30-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   30-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:   30-block  2
+call    6 returned 1
+    $$$$$:   30-block  3
+call    7 never executed
+       5*:   31:    EXPECT_NO_THROW(Salarie s("Toto", "2234567890123"))
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   31-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   31-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   31-block  2
+        1:   31-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   31-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   31-block  5
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   31-block  6
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+    %%%%%:   31-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   31-block  8
+call   24 never executed
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   31-block  9
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    %%%%%:   31-block 10
+call   31 never executed
+call   32 never executed
+call   33 never executed
+    $$$$$:   31-block 11
+call   34 never executed
+    $$$$$:   31-block 12
+    $$$$$:   31-block 13
+    $$$$$:   31-block 14
+call   35 never executed
+    $$$$$:   31-block 15
+    $$$$$:   31-block 16
+    $$$$$:   31-block 17
+branch 36 never executed
+branch 37 never executed
+    $$$$$:   31-block 18
+call   38 never executed
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   31-block 19
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   31-block 20
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   31-block 21
+call   48 never executed
+call   49 never executed
+branch 50 never executed (fallthrough)
+branch 51 never executed (throw)
+    $$$$$:   31-block 22
+call   52 never executed
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   31-block 23
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   31-block 24
+    $$$$$:   31-block 25
+call   59 never executed
+    $$$$$:   31-block 26
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   31-block 27
+    $$$$$:   31-block 28
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   31-block 29
+call   67 never executed
+    $$$$$:   31-block 30
+    $$$$$:   31-block 31
+call   68 never executed
+    $$$$$:   31-block 32
+call   69 never executed
+    $$$$$:   31-block 33
+call   70 never executed
+    $$$$$:   31-block 34
+call   71 never executed
+    $$$$$:   31-block 35
+    $$$$$:   31-block 36
+    $$$$$:   31-block 37
+call   72 never executed
+    $$$$$:   31-block 38
+       1*:   32:                        << "Const. numéroSS débutant par 2 ne lève pas d'exception";
+    %%%%%:   32-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   32-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:   32-block  2
+call    6 returned 1
+    $$$$$:   32-block  3
+call    7 never executed
+        -:   33:    // Test salaires incorrect lèvent SalaireIncorrectException
+       6*:   34:    EXPECT_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC - 0.1f), SalaireIncorrectException)
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   34-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   34-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   34-block  2
+        1:   34-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   34-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   34-block  5
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1 (throw)
+    %%%%%:   34-block  6
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   34-block  7
+branch 21 taken 0 (fallthrough)
+branch 22 taken 1
+    %%%%%:   34-block  8
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:   34-block  9
+    %%%%%:   34-block 10
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    %%%%%:   34-block 11
+call   32 never executed
+branch 33 never executed (fallthrough)
+branch 34 never executed (throw)
+    %%%%%:   34-block 12
+call   35 never executed
+call   36 never executed
+        1:   34-block 13
+call   37 returned 1
+        1:   34-block 14
+        1:   34-block 15
+        1:   34-block 16
+call   38 returned 1
+        1:   34-block 17
+        1:   34-block 18
+        1:   34-block 19
+branch 39 taken 1
+branch 40 taken 0
+branch 41 taken 0
+        1:   34-block 20
+call   42 returned 1
+call   43 returned 1
+branch 44 taken 1 (fallthrough)
+branch 45 taken 0 (throw)
+    $$$$$:   34-block 21
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:   34-block 22
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   34-block 23
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   34-block 24
+call   56 never executed
+call   57 never executed
+branch 58 never executed (fallthrough)
+branch 59 never executed (throw)
+    $$$$$:   34-block 25
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   34-block 26
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   34-block 27
+    $$$$$:   34-block 28
+call   67 never executed
+    $$$$$:   34-block 29
+call   68 never executed
+call   69 never executed
+branch 70 never executed (fallthrough)
+branch 71 never executed (throw)
+    $$$$$:   34-block 30
+    $$$$$:   34-block 31
+call   72 never executed
+branch 73 never executed (fallthrough)
+branch 74 never executed (throw)
+    $$$$$:   34-block 32
+call   75 never executed
+    $$$$$:   34-block 33
+    $$$$$:   34-block 34
+call   76 never executed
+    $$$$$:   34-block 35
+call   77 never executed
+    $$$$$:   34-block 36
+call   78 never executed
+    $$$$$:   34-block 37
+    $$$$$:   34-block 38
+call   79 never executed
+    $$$$$:   34-block 39
+       1*:   35:                        << "Const. salaire trop petit lève SalaireIncorrectException";
+    %%%%%:   35-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   35-block  1
+call    3 never executed
+        1:   35-block  2
+call    4 returned 1
+    $$$$$:   35-block  3
+call    5 never executed
+       6*:   36:    EXPECT_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC * Salarie::COEFF_SMIC + 0.1f),
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   36-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   36-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   36-block  2
+        1:   36-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   36-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   36-block  5
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1 (throw)
+    %%%%%:   36-block  6
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   36-block  7
+branch 21 taken 0 (fallthrough)
+branch 22 taken 1
+    %%%%%:   36-block  8
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:   36-block  9
+    %%%%%:   36-block 10
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    %%%%%:   36-block 11
+call   32 never executed
+branch 33 never executed (fallthrough)
+branch 34 never executed (throw)
+    %%%%%:   36-block 12
+call   35 never executed
+call   36 never executed
+        1:   36-block 13
+call   37 returned 1
+        1:   36-block 14
+        1:   36-block 15
+        1:   36-block 16
+call   38 returned 1
+        1:   36-block 17
+        1:   36-block 18
+        1:   36-block 19
+branch 39 taken 1
+branch 40 taken 0
+branch 41 taken 0
+        1:   36-block 20
+call   42 returned 1
+call   43 returned 1
+branch 44 taken 1 (fallthrough)
+branch 45 taken 0 (throw)
+    $$$$$:   36-block 21
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:   36-block 22
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   36-block 23
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   36-block 24
+call   56 never executed
+call   57 never executed
+branch 58 never executed (fallthrough)
+branch 59 never executed (throw)
+    $$$$$:   36-block 25
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   36-block 26
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   36-block 27
+    $$$$$:   36-block 28
+call   67 never executed
+    $$$$$:   36-block 29
+call   68 never executed
+call   69 never executed
+branch 70 never executed (fallthrough)
+branch 71 never executed (throw)
+    $$$$$:   36-block 30
+    $$$$$:   36-block 31
+call   72 never executed
+branch 73 never executed (fallthrough)
+branch 74 never executed (throw)
+    $$$$$:   36-block 32
+call   75 never executed
+    $$$$$:   36-block 33
+    $$$$$:   36-block 34
+call   76 never executed
+    $$$$$:   36-block 35
+call   77 never executed
+    $$$$$:   36-block 36
+call   78 never executed
+    $$$$$:   36-block 37
+    $$$$$:   36-block 38
+call   79 never executed
+    $$$$$:   36-block 39
+        -:   37:                 SalaireIncorrectException)
+       1*:   38:                        << "Const. salaire trop grand lève SalaireIncorrectException";
+    %%%%%:   38-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   38-block  1
+call    3 never executed
+        1:   38-block  2
+call    4 returned 1
+    $$$$$:   38-block  3
+call    5 never executed
+        -:   39:    // Test salaires corrects ne lèvent pas d'exception
+       5*:   40:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC))
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   40-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   40-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   40-block  2
+        1:   40-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   40-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   40-block  5
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   40-block  6
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+    %%%%%:   40-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   40-block  8
+call   24 never executed
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   40-block  9
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    %%%%%:   40-block 10
+call   31 never executed
+call   32 never executed
+call   33 never executed
+    $$$$$:   40-block 11
+call   34 never executed
+    $$$$$:   40-block 12
+    $$$$$:   40-block 13
+    $$$$$:   40-block 14
+call   35 never executed
+    $$$$$:   40-block 15
+    $$$$$:   40-block 16
+    $$$$$:   40-block 17
+branch 36 never executed
+branch 37 never executed
+    $$$$$:   40-block 18
+call   38 never executed
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   40-block 19
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   40-block 20
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   40-block 21
+call   48 never executed
+call   49 never executed
+branch 50 never executed (fallthrough)
+branch 51 never executed (throw)
+    $$$$$:   40-block 22
+call   52 never executed
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   40-block 23
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   40-block 24
+    $$$$$:   40-block 25
+call   59 never executed
+    $$$$$:   40-block 26
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   40-block 27
+    $$$$$:   40-block 28
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   40-block 29
+call   67 never executed
+    $$$$$:   40-block 30
+    $$$$$:   40-block 31
+call   68 never executed
+    $$$$$:   40-block 32
+call   69 never executed
+    $$$$$:   40-block 33
+call   70 never executed
+    $$$$$:   40-block 34
+call   71 never executed
+    $$$$$:   40-block 35
+    $$$$$:   40-block 36
+    $$$$$:   40-block 37
+call   72 never executed
+    $$$$$:   40-block 38
+       1*:   41:                        << "Const. salaire min ne lève pas d'exception";
+    %%%%%:   41-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   41-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:   41-block  2
+call    6 returned 1
+    $$$$$:   41-block  3
+call    7 never executed
+       5*:   42:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123", Salarie::SMIC * Salarie::COEFF_SMIC))
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   42-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   42-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   42-block  2
+        1:   42-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   42-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   42-block  5
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   42-block  6
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+    %%%%%:   42-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   42-block  8
+call   24 never executed
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   42-block  9
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    %%%%%:   42-block 10
+call   31 never executed
+call   32 never executed
+call   33 never executed
+    $$$$$:   42-block 11
+call   34 never executed
+    $$$$$:   42-block 12
+    $$$$$:   42-block 13
+    $$$$$:   42-block 14
+call   35 never executed
+    $$$$$:   42-block 15
+    $$$$$:   42-block 16
+    $$$$$:   42-block 17
+branch 36 never executed
+branch 37 never executed
+    $$$$$:   42-block 18
+call   38 never executed
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   42-block 19
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   42-block 20
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   42-block 21
+call   48 never executed
+call   49 never executed
+branch 50 never executed (fallthrough)
+branch 51 never executed (throw)
+    $$$$$:   42-block 22
+call   52 never executed
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   42-block 23
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   42-block 24
+    $$$$$:   42-block 25
+call   59 never executed
+    $$$$$:   42-block 26
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   42-block 27
+    $$$$$:   42-block 28
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   42-block 29
+call   67 never executed
+    $$$$$:   42-block 30
+    $$$$$:   42-block 31
+call   68 never executed
+    $$$$$:   42-block 32
+call   69 never executed
+    $$$$$:   42-block 33
+call   70 never executed
+    $$$$$:   42-block 34
+call   71 never executed
+    $$$$$:   42-block 35
+    $$$$$:   42-block 36
+    $$$$$:   42-block 37
+call   72 never executed
+    $$$$$:   42-block 38
+       1*:   43:                        << "Const. salaire max ne lève pas d'exception";
+    %%%%%:   43-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   43-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:   43-block  2
+call    6 returned 1
+    $$$$$:   43-block  3
+call    7 never executed
+       5*:   44:    EXPECT_NO_THROW(Salarie s("Toto", "1234567890123",
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   44-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   44-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   44-block  2
+        1:   44-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   44-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   44-block  5
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   44-block  6
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+    %%%%%:   44-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   44-block  8
+call   24 never executed
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   44-block  9
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    %%%%%:   44-block 10
+call   31 never executed
+call   32 never executed
+call   33 never executed
+    $$$$$:   44-block 11
+call   34 never executed
+    $$$$$:   44-block 12
+    $$$$$:   44-block 13
+    $$$$$:   44-block 14
+call   35 never executed
+    $$$$$:   44-block 15
+    $$$$$:   44-block 16
+    $$$$$:   44-block 17
+branch 36 never executed
+branch 37 never executed
+    $$$$$:   44-block 18
+call   38 never executed
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   44-block 19
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   44-block 20
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   44-block 21
+call   48 never executed
+call   49 never executed
+branch 50 never executed (fallthrough)
+branch 51 never executed (throw)
+    $$$$$:   44-block 22
+call   52 never executed
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   44-block 23
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   44-block 24
+    $$$$$:   44-block 25
+call   59 never executed
+    $$$$$:   44-block 26
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   44-block 27
+    $$$$$:   44-block 28
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   44-block 29
+call   67 never executed
+    $$$$$:   44-block 30
+    $$$$$:   44-block 31
+call   68 never executed
+    $$$$$:   44-block 32
+call   69 never executed
+    $$$$$:   44-block 33
+call   70 never executed
+    $$$$$:   44-block 34
+call   71 never executed
+    $$$$$:   44-block 35
+    $$$$$:   44-block 36
+    $$$$$:   44-block 37
+call   72 never executed
+    $$$$$:   44-block 38
+        -:   45:                            (Salarie::SMIC + Salarie::SMIC * Salarie::COEFF_SMIC) / 2.0f))
+       1*:   46:                        << "Const. salaire median ne lève pas d'exception";
+    %%%%%:   46-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   46-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:   46-block  2
+call    6 returned 1
+    $$$$$:   46-block  3
+call    7 never executed
+        -:   47:    // test construction bien réalisée
+        3:   48:    string nom = "MARTIN", numeroSS = "1234567890123";
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   48-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   48-block  2
+    $$$$$:   48-block  3
+    $$$$$:   48-block  4
+call    6 never executed
+    $$$$$:   48-block  5
+call    7 never executed
+        1:   49:    float salaire = Salarie::SMIC;
+        1:   50:    Salarie s(nom, numeroSS, salaire);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   50-block  0
+call    3 never executed
+       1*:   51:    ASSERT_EQ(nom, s.getNom()) << "Const. Nom ok";
+        1:   51-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   51-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   51-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   51-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   51-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   51-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   51-block  6
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   51-block  7
+call   22 never executed
+call   23 never executed
+        1:   51-block  8
+        1:   51-block  9
+call   24 returned 1
+branch 25 taken 1 (fallthrough)
+branch 26 taken 0
+        1:   51-block 10
+    $$$$$:   51-block 11
+call   27 never executed
+    $$$$$:   51-block 12
+    $$$$$:   51-block 13
+call   28 never executed
+    $$$$$:   51-block 14
+    $$$$$:   51-block 15
+call   29 never executed
+       1*:   52:    ASSERT_EQ(numeroSS, s.getNumeroSS()) << "Const. Numero SS ok";
+        1:   52-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   52-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   52-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   52-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   52-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   52-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   52-block  6
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   52-block  7
+call   22 never executed
+call   23 never executed
+        1:   52-block  8
+        1:   52-block  9
+call   24 returned 1
+branch 25 taken 1 (fallthrough)
+branch 26 taken 0
+        1:   52-block 10
+    $$$$$:   52-block 11
+call   27 never executed
+    $$$$$:   52-block 12
+    $$$$$:   52-block 13
+call   28 never executed
+    $$$$$:   52-block 14
+    $$$$$:   52-block 15
+call   29 never executed
+       1*:   53:    ASSERT_FLOAT_EQ(salaire, s.getSalaireMensuel()) << "Const. Salaire ok";
+        1:   53-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   53-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   53-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   53-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   53-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   53-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   53-block  6
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   53-block  7
+call   22 never executed
+call   23 never executed
+        1:   53-block  8
+        1:   53-block  9
+call   24 returned 1
+branch 25 taken 1 (fallthrough)
+branch 26 taken 0
+        1:   53-block 10
+    $$$$$:   53-block 11
+call   27 never executed
+    $$$$$:   53-block 12
+    $$$$$:   53-block 13
+call   28 never executed
+    $$$$$:   53-block 14
+    $$$$$:   53-block 15
+call   29 never executed
+        -:   54:}
+------------------
+        -:   55:
+        4:   56:TEST(SalarieTest, GetImpot) {
+        -:   57:    // On teste TOUTES les tranches d'imposition possibles
+        1:   58:    for (auto it = Salarie::TRANCHES_IMPOT.begin();
+        7:   59:         it != Salarie::TRANCHES_IMPOT.end(); it++) {
+        -:   60:
+        -:   61:        // On récupère les informations de la tranche courante
+        6:   62:        float revenuAnnuel = it->first;
+        6:   63:        float tauxCourant = it->second;
+        6:   64:        float revenuMensuel = revenuAnnuel / 12.0f;
+        -:   65:
+        -:   66:        // Cas 1. On teste le cas du revenu inférieur à la  limite de la tranche courante
+        -:   67:        try {
+        6:   68:            float revenuMensuelInf = revenuMensuel - 1.0f;
+        6:   69:            float revenuAnnuelInf = revenuMensuelInf * 12.0f;
+       21:   70:            Salarie unSalarie("M", "1234567890123", revenuMensuelInf);
+        -:   71:            // On construit un message spécifique pour ce test
+        3:   72:            stringstream message; // stringstream : chaine manipulable comme un flux
+        3:   73:            message << "Revenu < " << revenuAnnuel << " => taux = " << tauxCourant;
+       3*:   74:            EXPECT_FLOAT_EQ(unSalarie.getImpot(), revenuAnnuelInf * tauxCourant) << message.str();
+        6:   75:        } catch (SalarieException &e) {
+        -:   76:            // pas d'assertion si salaire pas dans l'intervalle autorisé
+        3:   77:        }
+        -:   78:
+        -:   79:        // Cas 2. On teste le cas du revenu égal à la limite de la tranche courante
+        6:   80:        auto itSuivant = it;
+        6:   81:        itSuivant++; // On va chercher la tranche suivante si elle existe
+        6:   82:        if (itSuivant != Salarie::TRANCHES_IMPOT.end()) {
+        -:   83:            try {
+        5:   84:                float tauxSuivant = itSuivant->second;
+       17:   85:                Salarie unSalarie("M", "1234567890123", revenuMensuel);
+        -:   86:                // On construit un message spécifique pour ce test
+        3:   87:                stringstream message;
+        3:   88:                message << "Revenu = " << revenuAnnuel << " => taux = " << tauxSuivant;
+       3*:   89:                EXPECT_FLOAT_EQ(unSalarie.getImpot(), revenuAnnuel * tauxSuivant) << message.str();
+        5:   90:            } catch (SalarieException &e) {
+        -:   91:                // pas d'assertion si salaire pas dans l'intervalle autorisé
+        2:   92:            }
+        -:   93:        }
+        -:   94:    }
+        1:   95:}
+------------------
+_ZN25SalarieTest_GetImpot_TestC1Ev:
+function _ZN25SalarieTest_GetImpot_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   56:TEST(SalarieTest, GetImpot) {
+        1:   56-block  0
+call    0 returned 1
+------------------
+_ZN25SalarieTest_GetImpot_TestD0Ev:
+function _ZN25SalarieTest_GetImpot_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   56:TEST(SalarieTest, GetImpot) {
+        1:   56-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN25SalarieTest_GetImpot_TestD1Ev:
+function _ZN25SalarieTest_GetImpot_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   56:TEST(SalarieTest, GetImpot) {
+        1:   56-block  0
+call    0 returned 1
+------------------
+_ZN25SalarieTest_GetImpot_Test8TestBodyEv:
+function _ZN25SalarieTest_GetImpot_Test8TestBodyEv called 1 returned 100% blocks executed 63%
+        1:   56:TEST(SalarieTest, GetImpot) {
+        -:   57:    // On teste TOUTES les tranches d'imposition possibles
+        1:   58:    for (auto it = Salarie::TRANCHES_IMPOT.begin();
+        1:   58-block  0
+call    0 returned 1
+        7:   59:         it != Salarie::TRANCHES_IMPOT.end(); it++) {
+        6:   59-block  0
+call    0 returned 6
+        7:   59-block  1
+call    1 returned 7
+call    2 returned 7
+branch  3 taken 6
+branch  4 taken 1 (fallthrough)
+        -:   60:
+        -:   61:        // On récupère les informations de la tranche courante
+        6:   62:        float revenuAnnuel = it->first;
+        6:   62-block  0
+call    0 returned 6
+        6:   63:        float tauxCourant = it->second;
+call    0 returned 6
+        6:   64:        float revenuMensuel = revenuAnnuel / 12.0f;
+        -:   65:
+        -:   66:        // Cas 1. On teste le cas du revenu inférieur à la  limite de la tranche courante
+        -:   67:        try {
+        6:   68:            float revenuMensuelInf = revenuMensuel - 1.0f;
+        6:   69:            float revenuAnnuelInf = revenuMensuelInf * 12.0f;
+       21:   70:            Salarie unSalarie("M", "1234567890123", revenuMensuelInf);
+        6:   70-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:   70-block  1
+call    3 returned 6
+branch  4 taken 6 (fallthrough)
+branch  5 taken 0 (throw)
+        6:   70-block  2
+call    6 returned 6
+branch  7 taken 3 (fallthrough)
+branch  8 taken 3 (throw)
+        3:   70-block  3
+call    9 returned 3
+call   10 returned 3
+        3:   70-block  4
+call   11 returned 3
+        3:   70-block  5
+        3:   70-block  6
+        3:   70-block  7
+call   12 returned 3
+        3:   70-block  8
+        3:   70-block  9
+        -:   71:            // On construit un message spécifique pour ce test
+        3:   72:            stringstream message; // stringstream : chaine manipulable comme un flux
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   73:            message << "Revenu < " << revenuAnnuel << " => taux = " << tauxCourant;
+        3:   73-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   73-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   73-block  2
+call    6 returned 3
+branch  7 taken 3 (fallthrough)
+branch  8 taken 0 (throw)
+        3:   73-block  3
+call    9 returned 3
+branch 10 taken 3 (fallthrough)
+branch 11 taken 0 (throw)
+       3*:   74:            EXPECT_FLOAT_EQ(unSalarie.getImpot(), revenuAnnuelInf * tauxCourant) << message.str();
+        3:   74-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   74-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   74-block  2
+call    6 returned 3
+branch  7 taken 0 (fallthrough)
+branch  8 taken 3
+    %%%%%:   74-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   74-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   74-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   74-block  6
+call   18 never executed
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   74-block  7
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   74-block  8
+call   25 never executed
+call   26 never executed
+call   27 never executed
+        3:   74-block  9
+call   28 returned 3
+    $$$$$:   74-block 10
+call   29 never executed
+    $$$$$:   74-block 11
+    $$$$$:   74-block 12
+call   30 never executed
+    $$$$$:   74-block 13
+    $$$$$:   74-block 14
+call   31 never executed
+    $$$$$:   74-block 15
+    $$$$$:   74-block 16
+call   32 never executed
+        6:   75:        } catch (SalarieException &e) {
+call    0 returned 3
+call    1 returned 3
+    $$$$$:   75-block  0
+call    2 never executed
+    $$$$$:   75-block  1
+call    3 never executed
+        3:   75-block  2
+branch  4 taken 0 (fallthrough)
+branch  5 taken 3
+        3:   75-block  3
+call    6 returned 3
+        -:   76:            // pas d'assertion si salaire pas dans l'intervalle autorisé
+        3:   77:        }
+call    0 returned 3
+        -:   78:
+        -:   79:        // Cas 2. On teste le cas du revenu égal à la limite de la tranche courante
+        6:   80:        auto itSuivant = it;
+        6:   81:        itSuivant++; // On va chercher la tranche suivante si elle existe
+        6:   81-block  0
+call    0 returned 6
+        6:   82:        if (itSuivant != Salarie::TRANCHES_IMPOT.end()) {
+call    0 returned 6
+call    1 returned 6
+branch  2 taken 5 (fallthrough)
+branch  3 taken 1
+        -:   83:            try {
+        5:   84:                float tauxSuivant = itSuivant->second;
+        5:   84-block  0
+call    0 returned 5
+       17:   85:                Salarie unSalarie("M", "1234567890123", revenuMensuel);
+        5:   85-block  0
+call    0 returned 5
+branch  1 taken 5 (fallthrough)
+branch  2 taken 0 (throw)
+        5:   85-block  1
+call    3 returned 5
+branch  4 taken 5 (fallthrough)
+branch  5 taken 0 (throw)
+        5:   85-block  2
+call    6 returned 5
+branch  7 taken 3 (fallthrough)
+branch  8 taken 2 (throw)
+        3:   85-block  3
+call    9 returned 3
+call   10 returned 3
+        2:   85-block  4
+call   11 returned 2
+        2:   85-block  5
+        2:   85-block  6
+        2:   85-block  7
+call   12 returned 2
+        2:   85-block  8
+        2:   85-block  9
+        -:   86:                // On construit un message spécifique pour ce test
+        3:   87:                stringstream message;
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   88:                message << "Revenu = " << revenuAnnuel << " => taux = " << tauxSuivant;
+        3:   88-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   88-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   88-block  2
+call    6 returned 3
+branch  7 taken 3 (fallthrough)
+branch  8 taken 0 (throw)
+        3:   88-block  3
+call    9 returned 3
+branch 10 taken 3 (fallthrough)
+branch 11 taken 0 (throw)
+       3*:   89:                EXPECT_FLOAT_EQ(unSalarie.getImpot(), revenuAnnuel * tauxSuivant) << message.str();
+        3:   89-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   89-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   89-block  2
+call    6 returned 3
+branch  7 taken 0 (fallthrough)
+branch  8 taken 3
+    %%%%%:   89-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   89-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   89-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   89-block  6
+call   18 never executed
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   89-block  7
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   89-block  8
+call   25 never executed
+call   26 never executed
+call   27 never executed
+        3:   89-block  9
+call   28 returned 3
+    $$$$$:   89-block 10
+call   29 never executed
+    $$$$$:   89-block 11
+    $$$$$:   89-block 12
+call   30 never executed
+    $$$$$:   89-block 13
+    $$$$$:   89-block 14
+call   31 never executed
+    $$$$$:   89-block 15
+    $$$$$:   89-block 16
+call   32 never executed
+        5:   90:            } catch (SalarieException &e) {
+call    0 returned 3
+call    1 returned 3
+    $$$$$:   90-block  0
+call    2 never executed
+    $$$$$:   90-block  1
+call    3 never executed
+        2:   90-block  2
+branch  4 taken 0 (fallthrough)
+branch  5 taken 2
+        2:   90-block  3
+call    6 returned 2
+        -:   91:                // pas d'assertion si salaire pas dans l'intervalle autorisé
+        2:   92:            }
+call    0 returned 2
+        -:   93:        }
+        -:   94:    }
+        1:   95:}
+        1:   95-block  0
+------------------
+        -:   96:
+        4:   97:TEST(SalarieTest, GetNom) {
+        -:   98:    // Test noms bien transformés en majuscules
+        1:   99:    for (auto &it: map<const string, const string>{{"martin",      "MARTIN"},
+        -:  100:                                                   {"MARTIN",      "MARTIN"},
+        -:  101:                                                   {"duran-duran", "DURAN-DURAN"},
+       10:  102:                                                   {"DURAN-DURAN", "DURAN-DURAN"}}) {
+        4:  103:        Salarie s(it.first);
+       4*:  104:        EXPECT_EQ(s.getNom(), it.second)
+       4*:  105:                            << "Salarie(\"" << it.first << "\").getNom() doit renvoyer " << it.second << "\"";
+        5:  106:    }
+        2:  107:}
+------------------
+_ZN23SalarieTest_GetNom_TestC1Ev:
+function _ZN23SalarieTest_GetNom_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:   97:TEST(SalarieTest, GetNom) {
+        1:   97-block  0
+call    0 returned 1
+------------------
+_ZN23SalarieTest_GetNom_TestD0Ev:
+function _ZN23SalarieTest_GetNom_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   97:TEST(SalarieTest, GetNom) {
+        1:   97-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN23SalarieTest_GetNom_TestD1Ev:
+function _ZN23SalarieTest_GetNom_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:   97:TEST(SalarieTest, GetNom) {
+        1:   97-block  0
+call    0 returned 1
+------------------
+_ZN23SalarieTest_GetNom_Test8TestBodyEv:
+function _ZN23SalarieTest_GetNom_Test8TestBodyEv called 1 returned 100% blocks executed 41%
+        1:   97:TEST(SalarieTest, GetNom) {
+        -:   98:    // Test noms bien transformés en majuscules
+        1:   99:    for (auto &it: map<const string, const string>{{"martin",      "MARTIN"},
+        -:  100:                                                   {"MARTIN",      "MARTIN"},
+        -:  101:                                                   {"duran-duran", "DURAN-DURAN"},
+       10:  102:                                                   {"DURAN-DURAN", "DURAN-DURAN"}}) {
+        1:  102-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  102-block  1
+call    3 returned 1
+        5:  102-block  2
+branch  4 taken 4 (fallthrough)
+branch  5 taken 1
+        4:  102-block  3
+call    6 returned 4
+        1:  102-block  4
+call    7 returned 1
+call    8 returned 1
+        4:  102-block  5
+call    9 returned 4
+call   10 returned 4
+        5:  102-block  6
+call   11 returned 5
+branch 12 taken 4
+branch 13 taken 1 (fallthrough)
+    $$$$$:  102-block  7
+    $$$$$:  102-block  8
+    $$$$$:  102-block  9
+    $$$$$:  102-block 10
+branch 14 never executed (fallthrough)
+branch 15 never executed
+    $$$$$:  102-block 11
+call   16 never executed
+    $$$$$:  102-block 12
+        4:  103:        Salarie s(it.first);
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+       4*:  104:        EXPECT_EQ(s.getNom(), it.second)
+        4:  104-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:  104-block  1
+call    3 returned 4
+branch  4 taken 4 (fallthrough)
+branch  5 taken 0 (throw)
+        4:  104-block  2
+call    6 returned 4
+branch  7 taken 0 (fallthrough)
+branch  8 taken 4
+    %%%%%:  104-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  104-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  104-block  5
+call   18 never executed
+call   19 never executed
+    $$$$$:  104-block  6
+call   20 never executed
+    $$$$$:  104-block  7
+    $$$$$:  104-block  8
+call   21 never executed
+    $$$$$:  104-block  9
+       4*:  105:                            << "Salarie(\"" << it.first << "\").getNom() doit renvoyer " << it.second << "\"";
+    %%%%%:  105-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  105-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  105-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  105-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  105-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  105-block  5
+call   15 never executed
+        4:  105-block  6
+call   16 returned 4
+    $$$$$:  105-block  7
+call   17 never executed
+        5:  106:    }
+call    0 returned 4
+        1:  106-block  0
+call    1 returned 1
+    $$$$$:  106-block  1
+call    2 never executed
+    $$$$$:  106-block  2
+call    3 never executed
+        2:  107:}
+        1:  107-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  107-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  107-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  107-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  107-block  4
+    $$$$$:  107-block  5
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:  107-block  6
+    $$$$$:  107-block  7
+branch 14 never executed (fallthrough)
+branch 15 never executed
+    $$$$$:  107-block  8
+call   16 never executed
+------------------
+        -:  108:
+        4:  109:TEST(SalarieTest, SetNom) {
+        1:  110:    Salarie s;
+        -:  111:    // Test setter avec noms incorrects
+        9:  112:    for (const string &nom: {"", "Oss117", "James Bond", "-martin"}) {
+       4*:  113:        EXPECT_THROW(s.setNom(nom), NomIncorrectException)
+       4*:  114:                            << "salarie.setNom(\"" << nom << "\") lève NomIncorrectException";
+        4:  115:    }
+        -:  116:    // Test setter avec noms corrects
+        5:  117:    for (const string &nom: {"martin", "Duran-duran"}) {
+       2*:  118:        EXPECT_NO_THROW(s.setNom(nom))
+       2*:  119:                            << "salarie.setNom(\"" << nom << "\") ne lève pas d'exception";
+        2:  120:    }
+        -:  121:    // Test setter modifie bien le nom
+        1:  122:    for (auto &it: map<const string, const string>{{"martin",      "MARTIN"},
+        -:  123:                                                   {"MARTIN",      "MARTIN"},
+        -:  124:                                                   {"duran-duran", "DURAN-DURAN"},
+       10:  125:                                                   {"DURAN-DURAN", "DURAN-DURAN"}}) {
+        4:  126:        s.setNom(it.first);
+       4*:  127:        EXPECT_EQ(s.getNom(), it.second)
+       4*:  128:                            << "salarie.setNom(\"" << it.first << "\") a modifié le nom en " << it.second << "\"";
+        1:  129:    }
+        2:  130:}
+------------------
+_ZN23SalarieTest_SetNom_TestC1Ev:
+function _ZN23SalarieTest_SetNom_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  109:TEST(SalarieTest, SetNom) {
+        1:  109-block  0
+call    0 returned 1
+------------------
+_ZN23SalarieTest_SetNom_TestD0Ev:
+function _ZN23SalarieTest_SetNom_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  109:TEST(SalarieTest, SetNom) {
+        1:  109-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN23SalarieTest_SetNom_TestD1Ev:
+function _ZN23SalarieTest_SetNom_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  109:TEST(SalarieTest, SetNom) {
+        1:  109-block  0
+call    0 returned 1
+------------------
+_ZN23SalarieTest_SetNom_Test8TestBodyEv:
+function _ZN23SalarieTest_SetNom_Test8TestBodyEv called 1 returned 100% blocks executed 31%
+        1:  109:TEST(SalarieTest, SetNom) {
+        1:  110:    Salarie s;
+        1:  110-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  111:    // Test setter avec noms incorrects
+        9:  112:    for (const string &nom: {"", "Oss117", "James Bond", "-martin"}) {
+        1:  112-block  0
+call    0 returned 1
+call    1 returned 1
+        4:  112-block  1
+call    2 returned 4
+branch  3 taken 4 (fallthrough)
+branch  4 taken 0 (throw)
+        4:  112-block  2
+call    5 returned 4
+        5:  112-block  3
+branch  6 taken 4
+branch  7 taken 1 (fallthrough)
+    $$$$$:  112-block  4
+       4*:  113:        EXPECT_THROW(s.setNom(nom), NomIncorrectException)
+call    0 returned 4
+call    1 returned 4
+branch  2 taken 4 (fallthrough)
+branch  3 taken 0
+        4:  113-block  0
+call    4 returned 4
+branch  5 taken 4 (fallthrough)
+branch  6 taken 0 (throw)
+        4:  113-block  1
+branch  7 taken 4 (fallthrough)
+branch  8 taken 0
+        4:  113-block  2
+call    9 returned 4
+branch 10 taken 0 (fallthrough)
+branch 11 taken 4 (throw)
+        4:  113-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 4
+    %%%%%:  113-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  113-block  5
+    %%%%%:  113-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  113-block  7
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:  113-block  8
+call   26 never executed
+call   27 never executed
+        4:  113-block  9
+branch 28 taken 4
+branch 29 taken 0
+branch 30 taken 0
+        4:  113-block 10
+call   31 returned 4
+call   32 returned 4
+branch 33 taken 4 (fallthrough)
+branch 34 taken 0 (throw)
+    $$$$$:  113-block 11
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  113-block 12
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  113-block 13
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  113-block 14
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  113-block 15
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  113-block 16
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  113-block 17
+    $$$$$:  113-block 18
+call   56 never executed
+    $$$$$:  113-block 19
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  113-block 20
+    $$$$$:  113-block 21
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  113-block 22
+call   64 never executed
+    $$$$$:  113-block 23
+    $$$$$:  113-block 24
+call   65 never executed
+    $$$$$:  113-block 25
+call   66 never executed
+    $$$$$:  113-block 26
+call   67 never executed
+    $$$$$:  113-block 27
+    $$$$$:  113-block 28
+call   68 never executed
+    $$$$$:  113-block 29
+       4*:  114:                            << "salarie.setNom(\"" << nom << "\") lève NomIncorrectException";
+    %%%%%:  114-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  114-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  114-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  114-block  3
+call    9 never executed
+        4:  114-block  4
+call   10 returned 4
+    $$$$$:  114-block  5
+call   11 never executed
+        4:  115:    }
+call    0 returned 4
+    $$$$$:  115-block  0
+call    1 never executed
+        -:  116:    // Test setter avec noms corrects
+        5:  117:    for (const string &nom: {"martin", "Duran-duran"}) {
+        1:  117-block  0
+call    0 returned 1
+call    1 returned 1
+        2:  117-block  1
+call    2 returned 2
+branch  3 taken 2 (fallthrough)
+branch  4 taken 0 (throw)
+        2:  117-block  2
+call    5 returned 2
+        3:  117-block  3
+branch  6 taken 2
+branch  7 taken 1 (fallthrough)
+    $$$$$:  117-block  4
+       2*:  118:        EXPECT_NO_THROW(s.setNom(nom))
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0
+        2:  118-block  0
+call    4 returned 2
+branch  5 taken 2 (fallthrough)
+branch  6 taken 0 (throw)
+        2:  118-block  1
+branch  7 taken 2 (fallthrough)
+branch  8 taken 0
+        2:  118-block  2
+call    9 returned 2
+branch 10 taken 2 (fallthrough)
+branch 11 taken 0 (throw)
+    %%%%%:  118-block  3
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  118-block  4
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  118-block  5
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  118-block  6
+call   22 never executed
+call   23 never executed
+call   24 never executed
+    $$$$$:  118-block  7
+branch 25 never executed
+branch 26 never executed
+    $$$$$:  118-block  8
+call   27 never executed
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    $$$$$:  118-block  9
+call   31 never executed
+branch 32 never executed (fallthrough)
+branch 33 never executed (throw)
+    $$$$$:  118-block 10
+call   34 never executed
+branch 35 never executed (fallthrough)
+branch 36 never executed (throw)
+    $$$$$:  118-block 11
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  118-block 12
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  118-block 13
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:  118-block 14
+    $$$$$:  118-block 15
+call   48 never executed
+    $$$$$:  118-block 16
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  118-block 17
+    $$$$$:  118-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  118-block 19
+call   56 never executed
+    $$$$$:  118-block 20
+    $$$$$:  118-block 21
+call   57 never executed
+    $$$$$:  118-block 22
+call   58 never executed
+    $$$$$:  118-block 23
+call   59 never executed
+    $$$$$:  118-block 24
+call   60 never executed
+    $$$$$:  118-block 25
+    $$$$$:  118-block 26
+    $$$$$:  118-block 27
+call   61 never executed
+    $$$$$:  118-block 28
+       2*:  119:                            << "salarie.setNom(\"" << nom << "\") ne lève pas d'exception";
+    %%%%%:  119-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  119-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  119-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  119-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+        2:  119-block  4
+call   12 returned 2
+    $$$$$:  119-block  5
+call   13 never executed
+        2:  120:    }
+call    0 returned 2
+    $$$$$:  120-block  0
+call    1 never executed
+        -:  121:    // Test setter modifie bien le nom
+        1:  122:    for (auto &it: map<const string, const string>{{"martin",      "MARTIN"},
+        -:  123:                                                   {"MARTIN",      "MARTIN"},
+        -:  124:                                                   {"duran-duran", "DURAN-DURAN"},
+       10:  125:                                                   {"DURAN-DURAN", "DURAN-DURAN"}}) {
+        1:  125-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  125-block  1
+call    3 returned 1
+        5:  125-block  2
+branch  4 taken 4 (fallthrough)
+branch  5 taken 1
+        4:  125-block  3
+call    6 returned 4
+        1:  125-block  4
+call    7 returned 1
+call    8 returned 1
+        4:  125-block  5
+call    9 returned 4
+call   10 returned 4
+        5:  125-block  6
+call   11 returned 5
+branch 12 taken 4
+branch 13 taken 1 (fallthrough)
+    $$$$$:  125-block  7
+    $$$$$:  125-block  8
+    $$$$$:  125-block  9
+    $$$$$:  125-block 10
+branch 14 never executed (fallthrough)
+branch 15 never executed
+    $$$$$:  125-block 11
+call   16 never executed
+    $$$$$:  125-block 12
+        4:  126:        s.setNom(it.first);
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+       4*:  127:        EXPECT_EQ(s.getNom(), it.second)
+        4:  127-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:  127-block  1
+call    3 returned 4
+branch  4 taken 4 (fallthrough)
+branch  5 taken 0 (throw)
+        4:  127-block  2
+call    6 returned 4
+branch  7 taken 0 (fallthrough)
+branch  8 taken 4
+    %%%%%:  127-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  127-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  127-block  5
+call   18 never executed
+call   19 never executed
+    $$$$$:  127-block  6
+call   20 never executed
+    $$$$$:  127-block  7
+    $$$$$:  127-block  8
+call   21 never executed
+    $$$$$:  127-block  9
+       4*:  128:                            << "salarie.setNom(\"" << it.first << "\") a modifié le nom en " << it.second << "\"";
+    %%%%%:  128-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  128-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  128-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  128-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  128-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  128-block  5
+call   15 never executed
+        4:  128-block  6
+call   16 returned 4
+    $$$$$:  128-block  7
+call   17 never executed
+        1:  129:    }
+        1:  129-block  0
+call    0 returned 1
+    $$$$$:  129-block  1
+call    1 never executed
+        2:  130:}
+        1:  130-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  130-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  130-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  130-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  130-block  4
+call   12 returned 1
+    $$$$$:  130-block  5
+branch 13 never executed (fallthrough)
+branch 14 never executed
+    $$$$$:  130-block  6
+    $$$$$:  130-block  7
+branch 15 never executed (fallthrough)
+branch 16 never executed
+    $$$$$:  130-block  8
+call   17 never executed
+    $$$$$:  130-block  9
+call   18 never executed
+------------------
+        -:  131:
+        4:  132:TEST(SalarieTest, SetNumeroSS) {
+        1:  133:    Salarie s;
+        -:  134:    // Test numéroSS invalides
+        7:  135:    for (const string &numeroSS: {"12345", "12345678901234", "123456789012A"}) {
+       3*:  136:        EXPECT_THROW(s.setNumeroSS(numeroSS), NumeroIncorrectException)
+       3*:  137:                            << "salarie.setNumeroSS(\"" << numeroSS << "\") lève NumeroIncorrectException";
+        3:  138:    }
+        -:  139:    // Test numéroSS à 13 chiffres ne commençant pas par 1 ou 2
+       17:  140:    for (const string & i: {"0", "3", "4", "5", "6", "7", "8", "9"}) {
+      16*:  141:        EXPECT_THROW(s.setNumeroSS(i + "234567890123"), NumeroIncorrectException)
+    #####:  142:                            << "salarie.setNumeroSS avec numéro débutant par " << i << "234567890123"
+       8*:  143:                            << " lève NumeroIncorrectException";
+        8:  144:    }
+        -:  145:    // Test numéros valides
+       3*:  146:    EXPECT_NO_THROW(s.setNumeroSS("1234567890123"))
+       1*:  147:                        << "salarie.setNumeroSS avec numéro débutant par 1 ne lève pas d'exception";
+       3*:  148:    EXPECT_NO_THROW(s.setNumeroSS("2234567890123"))
+       1*:  149:                        << "salarie.setNumeroSS avec numéro débutant par 2 ne lève pas d'exception";
+        -:  150:    // Test setter fait bien la modification
+        2:  151:    const string numValide = "2013456789012";
+        1:  152:    s.setNumeroSS(numValide);
+       1*:  153:    EXPECT_EQ(s.getNumeroSS(), "2013456789012") << "salarie.setNumeroSS modifie bien le numéro de SS";
+        1:  154:}
+------------------
+_ZN28SalarieTest_SetNumeroSS_TestC1Ev:
+function _ZN28SalarieTest_SetNumeroSS_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  132:TEST(SalarieTest, SetNumeroSS) {
+        1:  132-block  0
+call    0 returned 1
+------------------
+_ZN28SalarieTest_SetNumeroSS_TestD0Ev:
+function _ZN28SalarieTest_SetNumeroSS_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  132:TEST(SalarieTest, SetNumeroSS) {
+        1:  132-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN28SalarieTest_SetNumeroSS_TestD1Ev:
+function _ZN28SalarieTest_SetNumeroSS_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  132:TEST(SalarieTest, SetNumeroSS) {
+        1:  132-block  0
+call    0 returned 1
+------------------
+_ZN28SalarieTest_SetNumeroSS_Test8TestBodyEv:
+function _ZN28SalarieTest_SetNumeroSS_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:  132:TEST(SalarieTest, SetNumeroSS) {
+        1:  133:    Salarie s;
+        1:  133-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  134:    // Test numéroSS invalides
+        7:  135:    for (const string &numeroSS: {"12345", "12345678901234", "123456789012A"}) {
+        1:  135-block  0
+call    0 returned 1
+call    1 returned 1
+        3:  135-block  1
+call    2 returned 3
+branch  3 taken 3 (fallthrough)
+branch  4 taken 0 (throw)
+        3:  135-block  2
+call    5 returned 3
+        4:  135-block  3
+branch  6 taken 3
+branch  7 taken 1 (fallthrough)
+    $$$$$:  135-block  4
+       3*:  136:        EXPECT_THROW(s.setNumeroSS(numeroSS), NumeroIncorrectException)
+call    0 returned 3
+call    1 returned 3
+branch  2 taken 3 (fallthrough)
+branch  3 taken 0
+        3:  136-block  0
+call    4 returned 3
+branch  5 taken 3 (fallthrough)
+branch  6 taken 0 (throw)
+        3:  136-block  1
+branch  7 taken 3 (fallthrough)
+branch  8 taken 0
+        3:  136-block  2
+call    9 returned 3
+branch 10 taken 0 (fallthrough)
+branch 11 taken 3 (throw)
+        3:  136-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 3
+    %%%%%:  136-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  136-block  5
+    %%%%%:  136-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  136-block  7
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:  136-block  8
+call   26 never executed
+call   27 never executed
+        3:  136-block  9
+branch 28 taken 3
+branch 29 taken 0
+branch 30 taken 0
+        3:  136-block 10
+call   31 returned 3
+call   32 returned 3
+branch 33 taken 3 (fallthrough)
+branch 34 taken 0 (throw)
+    $$$$$:  136-block 11
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  136-block 12
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  136-block 13
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  136-block 14
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  136-block 15
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  136-block 16
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  136-block 17
+    $$$$$:  136-block 18
+call   56 never executed
+    $$$$$:  136-block 19
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  136-block 20
+    $$$$$:  136-block 21
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  136-block 22
+call   64 never executed
+    $$$$$:  136-block 23
+    $$$$$:  136-block 24
+call   65 never executed
+    $$$$$:  136-block 25
+call   66 never executed
+    $$$$$:  136-block 26
+call   67 never executed
+    $$$$$:  136-block 27
+    $$$$$:  136-block 28
+call   68 never executed
+    $$$$$:  136-block 29
+       3*:  137:                            << "salarie.setNumeroSS(\"" << numeroSS << "\") lève NumeroIncorrectException";
+    %%%%%:  137-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  137-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  137-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  137-block  3
+call    9 never executed
+        3:  137-block  4
+call   10 returned 3
+    $$$$$:  137-block  5
+call   11 never executed
+        3:  138:    }
+call    0 returned 3
+    $$$$$:  138-block  0
+call    1 never executed
+        -:  139:    // Test numéroSS à 13 chiffres ne commençant pas par 1 ou 2
+       17:  140:    for (const string & i: {"0", "3", "4", "5", "6", "7", "8", "9"}) {
+        1:  140-block  0
+call    0 returned 1
+call    1 returned 1
+        8:  140-block  1
+call    2 returned 8
+branch  3 taken 8 (fallthrough)
+branch  4 taken 0 (throw)
+        8:  140-block  2
+call    5 returned 8
+        9:  140-block  3
+branch  6 taken 8
+branch  7 taken 1 (fallthrough)
+    $$$$$:  140-block  4
+      16*:  141:        EXPECT_THROW(s.setNumeroSS(i + "234567890123"), NumeroIncorrectException)
+call    0 returned 8
+call    1 returned 8
+branch  2 taken 8 (fallthrough)
+branch  3 taken 0
+        8:  141-block  0
+call    4 returned 8
+branch  5 taken 8 (fallthrough)
+branch  6 taken 0 (throw)
+        8:  141-block  1
+branch  7 taken 8 (fallthrough)
+branch  8 taken 0
+        8:  141-block  2
+call    9 returned 8
+branch 10 taken 8 (fallthrough)
+branch 11 taken 0 (throw)
+        8:  141-block  3
+call   12 returned 8
+branch 13 taken 0 (fallthrough)
+branch 14 taken 8 (throw)
+    %%%%%:  141-block  4
+call   15 never executed
+        8:  141-block  5
+branch 16 taken 0 (fallthrough)
+branch 17 taken 8
+    %%%%%:  141-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  141-block  7
+    %%%%%:  141-block  8
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  141-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  141-block 10
+call   30 never executed
+call   31 never executed
+        8:  141-block 11
+call   32 returned 8
+        8:  141-block 12
+        8:  141-block 13
+branch 33 taken 8
+branch 34 taken 0
+branch 35 taken 0
+        8:  141-block 14
+call   36 returned 8
+call   37 returned 8
+branch 38 taken 8 (fallthrough)
+branch 39 taken 0 (throw)
+    $$$$$:  141-block 15
+call   40 never executed
+call   41 never executed
+branch 42 never executed (fallthrough)
+branch 43 never executed (throw)
+    $$$$$:  141-block 16
+call   44 never executed
+branch 45 never executed (fallthrough)
+branch 46 never executed (throw)
+    $$$$$:  141-block 17
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:  141-block 18
+call   50 never executed
+call   51 never executed
+branch 52 never executed (fallthrough)
+branch 53 never executed (throw)
+    $$$$$:  141-block 19
+call   54 never executed
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  141-block 20
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  141-block 21
+    $$$$$:  141-block 22
+call   61 never executed
+    $$$$$:  141-block 23
+call   62 never executed
+call   63 never executed
+branch 64 never executed (fallthrough)
+branch 65 never executed (throw)
+    $$$$$:  141-block 24
+    $$$$$:  141-block 25
+call   66 never executed
+branch 67 never executed (fallthrough)
+branch 68 never executed (throw)
+    $$$$$:  141-block 26
+call   69 never executed
+    $$$$$:  141-block 27
+    $$$$$:  141-block 28
+call   70 never executed
+    $$$$$:  141-block 29
+call   71 never executed
+    $$$$$:  141-block 30
+call   72 never executed
+    $$$$$:  141-block 31
+    $$$$$:  141-block 32
+call   73 never executed
+    $$$$$:  141-block 33
+    #####:  142:                            << "salarie.setNumeroSS avec numéro débutant par " << i << "234567890123"
+    %%%%%:  142-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  142-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  142-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+       8*:  143:                            << " lève NumeroIncorrectException";
+    %%%%%:  143-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  143-block  1
+call    3 never executed
+        8:  143-block  2
+call    4 returned 8
+    $$$$$:  143-block  3
+call    5 never executed
+        8:  144:    }
+call    0 returned 8
+    $$$$$:  144-block  0
+call    1 never executed
+        -:  145:    // Test numéros valides
+       3*:  146:    EXPECT_NO_THROW(s.setNumeroSS("1234567890123"))
+        1:  146-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  146-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  146-block  2
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  146-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  146-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:  146-block  5
+call   15 returned 1
+    %%%%%:  146-block  6
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  146-block  7
+call   19 never executed
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  146-block  8
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:  146-block  9
+call   26 never executed
+call   27 never executed
+call   28 never executed
+    $$$$$:  146-block 10
+call   29 never executed
+    $$$$$:  146-block 11
+    $$$$$:  146-block 12
+    $$$$$:  146-block 13
+branch 30 never executed
+branch 31 never executed
+    $$$$$:  146-block 14
+call   32 never executed
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    $$$$$:  146-block 15
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  146-block 16
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  146-block 17
+call   42 never executed
+call   43 never executed
+branch 44 never executed (fallthrough)
+branch 45 never executed (throw)
+    $$$$$:  146-block 18
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:  146-block 19
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  146-block 20
+    $$$$$:  146-block 21
+call   53 never executed
+    $$$$$:  146-block 22
+call   54 never executed
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  146-block 23
+    $$$$$:  146-block 24
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  146-block 25
+call   61 never executed
+    $$$$$:  146-block 26
+    $$$$$:  146-block 27
+call   62 never executed
+    $$$$$:  146-block 28
+call   63 never executed
+    $$$$$:  146-block 29
+call   64 never executed
+    $$$$$:  146-block 30
+call   65 never executed
+    $$$$$:  146-block 31
+    $$$$$:  146-block 32
+    $$$$$:  146-block 33
+call   66 never executed
+    $$$$$:  146-block 34
+       1*:  147:                        << "salarie.setNumeroSS avec numéro débutant par 1 ne lève pas d'exception";
+    %%%%%:  147-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  147-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:  147-block  2
+call    6 returned 1
+    $$$$$:  147-block  3
+call    7 never executed
+       3*:  148:    EXPECT_NO_THROW(s.setNumeroSS("2234567890123"))
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  148-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  148-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  148-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  148-block  3
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:  148-block  4
+call   15 returned 1
+    %%%%%:  148-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  148-block  6
+call   19 never executed
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  148-block  7
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:  148-block  8
+call   26 never executed
+call   27 never executed
+call   28 never executed
+    $$$$$:  148-block  9
+call   29 never executed
+    $$$$$:  148-block 10
+    $$$$$:  148-block 11
+    $$$$$:  148-block 12
+branch 30 never executed
+branch 31 never executed
+    $$$$$:  148-block 13
+call   32 never executed
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    $$$$$:  148-block 14
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  148-block 15
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  148-block 16
+call   42 never executed
+call   43 never executed
+branch 44 never executed (fallthrough)
+branch 45 never executed (throw)
+    $$$$$:  148-block 17
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:  148-block 18
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  148-block 19
+    $$$$$:  148-block 20
+call   53 never executed
+    $$$$$:  148-block 21
+call   54 never executed
+call   55 never executed
+branch 56 never executed (fallthrough)
+branch 57 never executed (throw)
+    $$$$$:  148-block 22
+    $$$$$:  148-block 23
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  148-block 24
+call   61 never executed
+    $$$$$:  148-block 25
+    $$$$$:  148-block 26
+call   62 never executed
+    $$$$$:  148-block 27
+call   63 never executed
+    $$$$$:  148-block 28
+call   64 never executed
+    $$$$$:  148-block 29
+call   65 never executed
+    $$$$$:  148-block 30
+    $$$$$:  148-block 31
+    $$$$$:  148-block 32
+call   66 never executed
+    $$$$$:  148-block 33
+       1*:  149:                        << "salarie.setNumeroSS avec numéro débutant par 2 ne lève pas d'exception";
+    %%%%%:  149-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  149-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:  149-block  2
+call    6 returned 1
+    $$$$$:  149-block  3
+call    7 never executed
+        -:  150:    // Test setter fait bien la modification
+        2:  151:    const string numValide = "2013456789012";
+        1:  151-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:  151-block  1
+    $$$$$:  151-block  2
+call    4 never executed
+        1:  152:    s.setNumeroSS(numValide);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  153:    EXPECT_EQ(s.getNumeroSS(), "2013456789012") << "salarie.setNumeroSS modifie bien le numéro de SS";
+        1:  153-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  153-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  153-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  153-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  153-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  153-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  153-block  6
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  153-block  7
+call   22 never executed
+call   23 never executed
+        1:  153-block  8
+call   24 returned 1
+    $$$$$:  153-block  9
+call   25 never executed
+    $$$$$:  153-block 10
+    $$$$$:  153-block 11
+call   26 never executed
+    $$$$$:  153-block 12
+    $$$$$:  153-block 13
+call   27 never executed
+        1:  154:}
+call    0 returned 1
+    $$$$$:  154-block  0
+call    1 never executed
+------------------
+        -:  155:
+        4:  156:TEST(SalarieTest, SetSalaire) {
+        1:  157:    Salarie s;
+        -:  158:    // Test salaires invalides
+       1*:  159:    EXPECT_THROW(s.setSalaireMensuel(Salarie::SMIC - 0.1f), SalaireIncorrectException)
+       1*:  160:                        << "Set salaire trop petit lève SalaireIncorrectException";
+       1*:  161:    EXPECT_THROW(s.setSalaireMensuel(Salarie::SMIC * Salarie::COEFF_SMIC + 0.1f),
+        -:  162:                 SalaireIncorrectException)
+       1*:  163:                        << "Set salaire trop grand lève SalaireIncorrectException";
+        -:  164:    // Test salaires valides
+       1*:  165:    EXPECT_NO_THROW(s.setSalaireMensuel(Salarie::SMIC))
+       1*:  166:                        << "Set salaire min ne lève pas d'exception";
+       1*:  167:    EXPECT_NO_THROW(s.setSalaireMensuel(Salarie::SMIC * Salarie::COEFF_SMIC))
+       1*:  168:                        << "Set salaire max ne lève pas d'exception";
+       1*:  169:    EXPECT_NO_THROW(s.setSalaireMensuel((Salarie::SMIC + Salarie::SMIC * Salarie::COEFF_SMIC) / 2.0f))
+       1*:  170:                        << "Set salaire median ne lève pas d'exception";
+        -:  171:    // Test setter modifie bien le salaire
+        1:  172:    const float newSalaire = 2345.67f;
+        1:  173:    s.setSalaireMensuel(newSalaire);
+       1*:  174:    EXPECT_FLOAT_EQ(s.getSalaireMensuel(),newSalaire) << "setSalaire modifie correctement le salaire";
+        1:  175:}
+------------------
+_ZN27SalarieTest_SetSalaire_TestC1Ev:
+function _ZN27SalarieTest_SetSalaire_TestC1Ev called 1 returned 100% blocks executed 100%
+        1:  156:TEST(SalarieTest, SetSalaire) {
+        1:  156-block  0
+call    0 returned 1
+------------------
+_ZN27SalarieTest_SetSalaire_TestD0Ev:
+function _ZN27SalarieTest_SetSalaire_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  156:TEST(SalarieTest, SetSalaire) {
+        1:  156-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27SalarieTest_SetSalaire_TestD1Ev:
+function _ZN27SalarieTest_SetSalaire_TestD1Ev called 1 returned 100% blocks executed 100%
+        1:  156:TEST(SalarieTest, SetSalaire) {
+        1:  156-block  0
+call    0 returned 1
+------------------
+_ZN27SalarieTest_SetSalaire_Test8TestBodyEv:
+function _ZN27SalarieTest_SetSalaire_Test8TestBodyEv called 1 returned 100% blocks executed 18%
+        1:  156:TEST(SalarieTest, SetSalaire) {
+        1:  157:    Salarie s;
+        1:  157-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  158:    // Test salaires invalides
+       1*:  159:    EXPECT_THROW(s.setSalaireMensuel(Salarie::SMIC - 0.1f), SalaireIncorrectException)
+        1:  159-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  159-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  159-block  2
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  159-block  3
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  159-block  4
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  159-block  5
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  159-block  6
+    %%%%%:  159-block  7
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  159-block  8
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:  159-block  9
+call   26 never executed
+call   27 never executed
+        1:  159-block 10
+branch 28 taken 1
+branch 29 taken 0
+branch 30 taken 0
+        1:  159-block 11
+call   31 returned 1
+call   32 returned 1
+branch 33 taken 1 (fallthrough)
+branch 34 taken 0 (throw)
+    $$$$$:  159-block 12
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  159-block 13
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  159-block 14
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  159-block 15
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  159-block 16
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  159-block 17
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  159-block 18
+    $$$$$:  159-block 19
+call   56 never executed
+    $$$$$:  159-block 20
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  159-block 21
+    $$$$$:  159-block 22
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  159-block 23
+call   64 never executed
+    $$$$$:  159-block 24
+    $$$$$:  159-block 25
+call   65 never executed
+    $$$$$:  159-block 26
+call   66 never executed
+    $$$$$:  159-block 27
+call   67 never executed
+    $$$$$:  159-block 28
+    $$$$$:  159-block 29
+call   68 never executed
+    $$$$$:  159-block 30
+       1*:  160:                        << "Set salaire trop petit lève SalaireIncorrectException";
+    %%%%%:  160-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  160-block  1
+call    3 never executed
+        1:  160-block  2
+call    4 returned 1
+    $$$$$:  160-block  3
+call    5 never executed
+       1*:  161:    EXPECT_THROW(s.setSalaireMensuel(Salarie::SMIC * Salarie::COEFF_SMIC + 0.1f),
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  161-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  161-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  161-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  161-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  161-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  161-block  5
+    %%%%%:  161-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+call   20 never executed
+branch 21 never executed (fallthrough)
+branch 22 never executed (throw)
+    %%%%%:  161-block  7
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:  161-block  8
+call   26 never executed
+call   27 never executed
+        1:  161-block  9
+branch 28 taken 1
+branch 29 taken 0
+branch 30 taken 0
+        1:  161-block 10
+call   31 returned 1
+call   32 returned 1
+branch 33 taken 1 (fallthrough)
+branch 34 taken 0 (throw)
+    $$$$$:  161-block 11
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  161-block 12
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  161-block 13
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  161-block 14
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  161-block 15
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  161-block 16
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  161-block 17
+    $$$$$:  161-block 18
+call   56 never executed
+    $$$$$:  161-block 19
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  161-block 20
+    $$$$$:  161-block 21
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  161-block 22
+call   64 never executed
+    $$$$$:  161-block 23
+    $$$$$:  161-block 24
+call   65 never executed
+    $$$$$:  161-block 25
+call   66 never executed
+    $$$$$:  161-block 26
+call   67 never executed
+    $$$$$:  161-block 27
+    $$$$$:  161-block 28
+call   68 never executed
+    $$$$$:  161-block 29
+        -:  162:                 SalaireIncorrectException)
+       1*:  163:                        << "Set salaire trop grand lève SalaireIncorrectException";
+    %%%%%:  163-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  163-block  1
+call    3 never executed
+        1:  163-block  2
+call    4 returned 1
+    $$$$$:  163-block  3
+call    5 never executed
+        -:  164:    // Test salaires valides
+       1*:  165:    EXPECT_NO_THROW(s.setSalaireMensuel(Salarie::SMIC))
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  165-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  165-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  165-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+    %%%%%:  165-block  3
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  165-block  4
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  165-block  5
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  165-block  6
+call   22 never executed
+call   23 never executed
+call   24 never executed
+    $$$$$:  165-block  7
+branch 25 never executed
+branch 26 never executed
+    $$$$$:  165-block  8
+call   27 never executed
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    $$$$$:  165-block  9
+call   31 never executed
+branch 32 never executed (fallthrough)
+branch 33 never executed (throw)
+    $$$$$:  165-block 10
+call   34 never executed
+branch 35 never executed (fallthrough)
+branch 36 never executed (throw)
+    $$$$$:  165-block 11
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  165-block 12
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  165-block 13
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:  165-block 14
+    $$$$$:  165-block 15
+call   48 never executed
+    $$$$$:  165-block 16
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  165-block 17
+    $$$$$:  165-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  165-block 19
+call   56 never executed
+    $$$$$:  165-block 20
+    $$$$$:  165-block 21
+call   57 never executed
+    $$$$$:  165-block 22
+call   58 never executed
+    $$$$$:  165-block 23
+call   59 never executed
+    $$$$$:  165-block 24
+call   60 never executed
+    $$$$$:  165-block 25
+    $$$$$:  165-block 26
+    $$$$$:  165-block 27
+call   61 never executed
+    $$$$$:  165-block 28
+       1*:  166:                        << "Set salaire min ne lève pas d'exception";
+    %%%%%:  166-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  166-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:  166-block  2
+call    6 returned 1
+    $$$$$:  166-block  3
+call    7 never executed
+       1*:  167:    EXPECT_NO_THROW(s.setSalaireMensuel(Salarie::SMIC * Salarie::COEFF_SMIC))
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  167-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  167-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  167-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+    %%%%%:  167-block  3
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  167-block  4
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  167-block  5
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  167-block  6
+call   22 never executed
+call   23 never executed
+call   24 never executed
+    $$$$$:  167-block  7
+branch 25 never executed
+branch 26 never executed
+    $$$$$:  167-block  8
+call   27 never executed
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    $$$$$:  167-block  9
+call   31 never executed
+branch 32 never executed (fallthrough)
+branch 33 never executed (throw)
+    $$$$$:  167-block 10
+call   34 never executed
+branch 35 never executed (fallthrough)
+branch 36 never executed (throw)
+    $$$$$:  167-block 11
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  167-block 12
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  167-block 13
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:  167-block 14
+    $$$$$:  167-block 15
+call   48 never executed
+    $$$$$:  167-block 16
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  167-block 17
+    $$$$$:  167-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  167-block 19
+call   56 never executed
+    $$$$$:  167-block 20
+    $$$$$:  167-block 21
+call   57 never executed
+    $$$$$:  167-block 22
+call   58 never executed
+    $$$$$:  167-block 23
+call   59 never executed
+    $$$$$:  167-block 24
+call   60 never executed
+    $$$$$:  167-block 25
+    $$$$$:  167-block 26
+    $$$$$:  167-block 27
+call   61 never executed
+    $$$$$:  167-block 28
+       1*:  168:                        << "Set salaire max ne lève pas d'exception";
+    %%%%%:  168-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  168-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:  168-block  2
+call    6 returned 1
+    $$$$$:  168-block  3
+call    7 never executed
+       1*:  169:    EXPECT_NO_THROW(s.setSalaireMensuel((Salarie::SMIC + Salarie::SMIC * Salarie::COEFF_SMIC) / 2.0f))
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  169-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  169-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  169-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+    %%%%%:  169-block  3
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  169-block  4
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  169-block  5
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  169-block  6
+call   22 never executed
+call   23 never executed
+call   24 never executed
+    $$$$$:  169-block  7
+branch 25 never executed
+branch 26 never executed
+    $$$$$:  169-block  8
+call   27 never executed
+call   28 never executed
+branch 29 never executed (fallthrough)
+branch 30 never executed (throw)
+    $$$$$:  169-block  9
+call   31 never executed
+branch 32 never executed (fallthrough)
+branch 33 never executed (throw)
+    $$$$$:  169-block 10
+call   34 never executed
+branch 35 never executed (fallthrough)
+branch 36 never executed (throw)
+    $$$$$:  169-block 11
+call   37 never executed
+call   38 never executed
+branch 39 never executed (fallthrough)
+branch 40 never executed (throw)
+    $$$$$:  169-block 12
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  169-block 13
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:  169-block 14
+    $$$$$:  169-block 15
+call   48 never executed
+    $$$$$:  169-block 16
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  169-block 17
+    $$$$$:  169-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  169-block 19
+call   56 never executed
+    $$$$$:  169-block 20
+    $$$$$:  169-block 21
+call   57 never executed
+    $$$$$:  169-block 22
+call   58 never executed
+    $$$$$:  169-block 23
+call   59 never executed
+    $$$$$:  169-block 24
+call   60 never executed
+    $$$$$:  169-block 25
+    $$$$$:  169-block 26
+    $$$$$:  169-block 27
+call   61 never executed
+    $$$$$:  169-block 28
+       1*:  170:                        << "Set salaire median ne lève pas d'exception";
+    %%%%%:  170-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  170-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        1:  170-block  2
+call    6 returned 1
+    $$$$$:  170-block  3
+call    7 never executed
+        -:  171:    // Test setter modifie bien le salaire
+        1:  172:    const float newSalaire = 2345.67f;
+        1:  173:    s.setSalaireMensuel(newSalaire);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  174:    EXPECT_FLOAT_EQ(s.getSalaireMensuel(),newSalaire) << "setSalaire modifie correctement le salaire";
+        1:  174-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  174-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  174-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  174-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  174-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  174-block  5
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  174-block  6
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  174-block  7
+call   22 never executed
+call   23 never executed
+        1:  174-block  8
+call   24 returned 1
+    $$$$$:  174-block  9
+call   25 never executed
+    $$$$$:  174-block 10
+    $$$$$:  174-block 11
+call   26 never executed
+    $$$$$:  174-block 12
+    $$$$$:  174-block 13
+call   27 never executed
+        1:  175:}
+call    0 returned 1
+    $$$$$:  175-block  0
+call    1 never executed
+------------------

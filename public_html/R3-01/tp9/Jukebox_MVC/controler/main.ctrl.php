@@ -1,0 +1,13 @@
+<?php
+require_once('framework/view.fw.php');
+
+//////////////////////////////////////////////////////////////////////////////
+// PARTIE SELECTION DE LA VUE
+//////////////////////////////////////////////////////////////////////////////
+
+// Création de la vue
+$view = new View();
+var_dump($page, $pageSize, $list, $nbButtonPage, $lastPage, $prev, $next);
+$view->display('jukebox');
+
+?>

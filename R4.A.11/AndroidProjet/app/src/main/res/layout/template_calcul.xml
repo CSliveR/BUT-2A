@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/template_calcul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
+
+    <EditText
+        android:id="@+id/template_resultat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number|numberSigned"
+        android:hint="\?" />
+
+    <!-- NumberPicker pour le reste (division niveau 2) -->
+    <NumberPicker
+        android:id="@+id/template_reste_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" /> <!-- Caché par défaut -->
+
+    <!-- Champ de saisie pour le reste (division niveau 3) -->
+    <EditText
+        android:id="@+id/template_reste_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Reste ?"
+        android:inputType="number"
+        android:visibility="gone" /> <!-- Caché par défaut -->
+</LinearLayout>

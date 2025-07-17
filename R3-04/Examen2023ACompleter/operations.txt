@@ -1,0 +1,31 @@
+const std::string & getIntitule();
+// retourne l’intitulé de l’évaluation.
+
+void setIntitule(const std::string & intitule);
+// modifie l’intitulé de l’évaluation.
+
+unsigned int getCoefficient();
+// retourne le coefficient de l’évaluation,
+// ou lève une exception range_error dans le cas d’une évaluation complexe vide.
+
+void setCoefficient(unsigned int coefficient);
+// modifie le coefficient d’une évaluation simple,
+// ou lève une exception de type logic_error dans le cas d’une évaluation complexe.
+
+float getNote();
+// retourne la note de l’évaluation, ou lève une exception de type range_error dans le 
+// cas d’une évaluation complexe vide ou qui contient au moins une évaluation sans note.
+
+void setNote(float note);
+// définit (ou modifie si elle existe déjà) la note d’une évaluation simple, 
+// ou lève une exception de type range_error si la note n’est pas  comprise entre 0 et 20, 
+// ou lève une exception de type logic_error dans le cas d’une évaluation complexe.
+
+void affiche();
+// affiche sur std::cout l’intitulé, le coefficient et la note d’une évaluation (et rien de plus);
+// si l’évaluation n’a pas de coefficient, ou pas de note, on affichera alors « ND » (Non Dispo).
+
+void addEvaluation(const Evaluation & evaluation);
+// ajoute une évaluation à une évaluation complexe,
+// ou lève une exception de type logic_error dans le cas d’une évaluation simple
+

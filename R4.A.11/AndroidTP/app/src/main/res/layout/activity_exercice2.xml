@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Exercice2Activity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exercice2_question" />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/exercice2_bonne_reponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exercice2_firstChoice" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exercice2_secondChoice" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exercice2_lastChoice" />
+    </RadioGroup>
+    <Button
+        android:id="@+id/exercice2_btnValider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exercice2_textButton" />
+    <TextView
+        android:id="@+id/exercice2_correct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exercice2_valider"/>
+</LinearLayout>

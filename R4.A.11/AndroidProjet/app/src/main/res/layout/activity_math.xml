@@ -1,0 +1,162 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <!-- TextView pour l'instruction -->
+    <TextView
+        android:id="@+id/text_instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choisissez une opération et sélectionnez un niveau :"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
+
+    <!-- TextView pour l'addition -->
+    <LinearLayout
+        android:id="@+id/linear_addition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_instruction"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_addition_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="➕"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/text_addition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Addition"
+            android:textSize="20sp"
+            android:paddingStart="8dp"
+            android:layout_toEndOf="@id/text_addition_emoji"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <!-- TextView pour la soustraction -->
+    <LinearLayout
+        android:id="@+id/linear_subtraction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_addition"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_subtraction_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="➖"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/text_subtraction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Soustraction"
+            android:textSize="20sp"
+            android:paddingStart="8dp"
+            android:layout_toEndOf="@id/text_subtraction_emoji"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <!-- TextView pour la multiplication -->
+    <LinearLayout
+        android:id="@+id/linear_multiplication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_subtraction"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_multiplication_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✖️"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/text_multiplication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Multiplication"
+            android:textSize="20sp"
+            android:paddingStart="8dp"
+            android:layout_toEndOf="@id/text_multiplication_emoji"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <!-- TextView pour la division -->
+    <LinearLayout
+        android:id="@+id/linear_division"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_multiplication"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_division_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="➗"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/text_division"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Division"
+            android:textSize="20sp"
+            android:paddingStart="8dp"
+            android:layout_toEndOf="@id/text_division_emoji"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/button_melange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_division"
+        android:layout_centerHorizontal="true"
+
+        android:textOn="Mélange Activé"
+        android:textOff="Mélange Désactivé"
+        android:padding="8dp"/>
+</RelativeLayout>

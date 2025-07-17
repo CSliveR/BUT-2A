@@ -1,0 +1,178 @@
+html {
+    --theme-color: 225;
+    /* Couleur unique du thème : en HSL */
+    --text-color: hsl(var(--theme-color), 10%, 50%);
+    --main-color: hsl(var(--theme-color), 50%, 96%);
+    --header-color: hsl(var(--theme-color), 81%, 59%);
+    --shadow-color: hsl(var(--theme-color), 16%, 90%);
+    --light-color: hsl(var(--theme-color), 50%, 95%);
+    /* Taille mini des colones de la table */
+    --min-table-size: 10em; /* Colonnes de contenu */
+    --icon-table-size: 3em; /* Colonne d'icone pour le delete */
+}
+
+body {
+    font-family: Roboto, Arial, sans-serif;
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/****************************************/
+/* La barre de recherche dans le header */
+/****************************************/
+
+/* Titre en gris normal */
+h1 {
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+h1 img {
+    vertical-align: text-bottom;
+}
+
+
+/* Placement en ligne à la suite du titre */
+header form, header data {
+    display: inline-block;
+    background-color: var(--main-color);
+    width: 50%;
+    padding-left: 10px;
+    margin-left: 10px;
+    font-size: 80%;
+}
+
+/* Même couleur que form, et plus de bords */
+header input {
+    border: 0px;
+    background-color: var(--main-color);
+    width: 90%;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    font-size: 80%;
+}
+
+/*  Ajoute la loupe devant le formulaire */
+header form::before, header data::before{
+    content: "\1F50D";
+    margin-right: 0.5em;;
+}
+
+/* Indique le focus en passant en blanc le fond, mais sans outline (pas beau) */
+header input:focus {
+    background-color: white;
+    outline: none;
+}
+
+/*****************************************/
+/* La table                              */
+/*****************************************/
+
+table {
+    margin-left: 15em;
+}
+
+/* Couleurs des titres avec taille minimum */
+th {
+    background-color: var(--header-color);
+    color: white;
+    min-width: var(--min-table-size);
+    padding: 0.5em;
+    ;
+}
+
+/* Change la couleur de fond pour signaler qu'on passe sur une colonne */
+tr:hover, tr:nth-child(even):hover {
+    background-color: var(--shadow-color);
+}
+
+/* Alternance de couleurs du contenu */
+tr:nth-child(even) {
+    background-color: var(--main-color);
+}
+
+/* Les entrées dans la table */
+table input {
+    border: 0px;
+    background-color: transparent;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+/*****************************************/
+/*     Design des boutons                */
+/*****************************************/
+
+button {
+    background-color: white;
+    font-family: Roboto, Arial, sans-serif;
+    color: var(--text-color);
+    font-size: 1.2em;
+    padding: 0.8em;
+    border-radius: 2em;
+    border: 1px solid var(--shadow-color);
+    box-shadow: 0.2em 0.2em 1em var(--shadow-color);
+
+}
+
+button:hover {
+    background-color: var(--light-color);
+    cursor: pointer;
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    background-color: white;
+}
+
+/*****************************************/
+/* Pour réaliser la croix pour le delete */
+/*****************************************/
+
+
+
+.delete {
+    /* Pour pouvoir faire le placement absolu par rapport à cette boite */
+    position: relative;
+    min-width: var(--icon-table-size);
+}
+
+/* Ajoute deux paragraphes vides  pour dessiner la croix */
+td.delete:before,
+td.delete:after {
+    /* Pour se placer par rapport à la boite .delete */
+    /* Permet aussi de mettre les deux paragraphes au même endroit */
+    position: absolute; 
+    left: calc(var(--icon-table-size)/ 1.7);
+    top: 0px;
+    content: '';
+    height: 20px;
+}
+
+/* Change la couleur de la croix quand on passe dessus */
+td.delete:hover:before, td.delete:hover:after {
+    transition: 0.2s;
+    background-color: red;
+    width: 4px;
+}
+
+/* Met un temps différent pour revenir à la couleur sombre */
+td.delete:before, td.delete:after {
+    transition: 0.8s;
+    background-color: var(--text-color);
+    width: 2px;
+}
+
+/* Bascule chaque paragraphe pour dessiner la croix */
+td.delete:before {
+    transform: rotate(45deg);
+}
+
+td.delete:after {
+    transform: rotate(-45deg);
+}
