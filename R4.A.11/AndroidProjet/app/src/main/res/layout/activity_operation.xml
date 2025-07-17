@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".gamesActs.math.OperationActivity">
+
+  <!-- Conteneur principal -->
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:weightSum="1">
+
+    <!-- Conteneur pour les calculs -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.95">
+      <LinearLayout
+          android:id="@+id/linear_container"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"/>
+    </ScrollView>
+
+    <!-- Bouton Valider -->
+    <Button
+        android:id="@+id/button_valider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:text="VALIDER"
+        android:textSize="18sp" />
+  </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,76 @@
+html {
+    --text-color: hsl(225, 10%, 50%);
+    --main-color: hsl(225, 50%, 96%);
+    --header-color: hsl(225, 81%, 59%);
+}
+
+body {
+    font-family: Roboto,Arial,sans-serif;
+    color: var(--text-color);
+}
+
+/****************************************/
+/* La barre de recherche dans le header */
+/****************************************/
+
+/* Titre en gris normal */
+h1 {
+    font-weight: normal; 
+    padding-left: 10px;
+}
+
+h1 img {
+    vertical-align: text-bottom;
+}
+
+
+/* Placement en ligne à la suite du titre */
+header form {
+    display: inline-block;
+    background-color: var(--main-color);
+    width: 50%;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+/* Même couleur que form, et plus de bords */
+header input {
+    border: 0px;
+    background-color: var(--main-color);
+    width: 90%;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    font-size: 80%;
+}
+
+/*  Ajoute la loupe devant le formulaire */
+ form::before {
+    content: "\1F50D";
+}
+
+/* Indique le focus en passant en blanc le fond, mais sans outline (pas beau) */
+header input:focus {
+    background-color: white;
+    outline: none;
+}
+
+/* La table */
+
+table {
+    /* Au centre */
+    margin: auto;
+}
+
+/* Couleurs des titres avec taille minimum */
+th {
+    background-color: var(--header-color);
+    color: white;
+    min-width: 10em;
+    padding: 0.5em;;
+}
+
+/* Alternance de couleurs du contenu */
+tr:nth-child(even) {
+    background-color: var(--main-color);
+}
+

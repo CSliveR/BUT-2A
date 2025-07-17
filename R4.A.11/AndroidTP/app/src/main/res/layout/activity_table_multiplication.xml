@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".exercice5Acts.TableMultiplicationActivity">
+
+    <!-- Conteneur principal avec 2 parties -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <!-- Partie qui prend tout l'espace disponible -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9">  <!-- 90% de l'espace -->
+
+            <LinearLayout
+                android:id="@+id/linear_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+        </ScrollView>
+
+        <!-- Partie contenant le bouton, toujours en bas -->
+        <Button
+            android:id="@+id/exercice5_btnValider"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:text="@string/exercice1_textButton" />
+    </LinearLayout>
+</LinearLayout>

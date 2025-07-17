@@ -1,0 +1,114 @@
+Exercice 1
+---------------
+1)Toutes les actions avant le rollback ont été ignorées et seule la requête après le rollback a été exécutée.
+
+2)Le serveur postgres insère dans la table moniteur le p-uplet de nummono = 10. On affiche cet uplet et on voit qu'il apparait bien dans le terminal 
+
+-> Atomicité et durabilité des transactions.
+
+Exercice 2
+------------
+1)un p-uplet avec un muméro de moniteur égal à null ne peut pas être inséré dans la table moniteur donc lorsque que l'on commit, un rollback est déclenché et défait toutes les actions réalisées avant le commit. L'uplet n'est donc pas inséré. 
+
+2)On essaie d'insérer dans la table INSCRIT un uplet de type(string, int) alors que INSCRIT accepte que (int, int) donc cette insertion n'est pas possible. Quand on commit la transaction, un rollback est effectué et TOUS les changements effectués avant le COMMIT sont annulés car la commande d'insertion dans la table INSCRIT contient une erreur.
+
+L'intérêt d'utiliser des transactions est de conserver de la cohérence dans les données.
+
+Dans le cas de la question 2), on est sur de pas avoir d'éléves qui n'ont aucun cours.
+
+
+Exercice 3
+-----------
+1)La transaction se passe bien et les résultats des select du user 2 sont mis à jour après que le user 1 a terminé son insertion. 
+
+2)La transaction de user1 est visible par user2 mais user1 décide de faire un rollback. Si user2 consulte après les rollback les changements apportés, ceux-ci auront disparu.
+
+A partir d'ici jusqu'à l'exercice 4
+voir trans2.sql et transRepetable.sql
+
+Exercice 5
+-----------
+1) et 2) 
+CREATE TABLE COMPTE (
+    numc SERIAL PRIMARY KEY,
+    client VARCHAR(100) NOT NULL,
+    solde DECIMAL(15, 2) DEFAULT 0.00
+);
+INSERT INTO COMPTE (numc, client, solde) VALUES (1, 'Alice', 1000.00);
+INSERT INTO COMPTE (numc, client, solde) VALUES (2, 'Bob', 1000.00); 
+
+3)
+--user1:
+begin;
+
+--user2:
+begin;
+select client, solde from compte;
+
+--user1:
+update compte set solde = solde - 100 where client = 'Bob';
+update compte set solde = solde + 100 where client = 'Alice';
+
+--user2:
+select client, solde from compte;
+
+--user1:
+commit;
+
+--user2:
+select client, solde from compte;
+
+Pour changer de mode, il faut taper ces commandes avant chaque begin:
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ ;
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE ;
+
+Mode READ COMMITED :
+    Les modifications du solde sont transmises et affichables par l'utilisateur 2 dans sa transaction dès que l'utillisateur 1 a commit.
+Mode REPEATABLE READ (par rapport à READ COMMITED): 
+    L'utilisateur 2 ne peut pas voir les modifications du compte pendant la transaction. Il doit commit pour voir les chgts.
+Mode SERIALIZABLE :
+    Même comportement que celui du mode REPEATABLE READ.
+
+4)
+--user1:
+begin;
+
+--user2:
+begin;
+
+--user1:
+update compte set solde = 4000 where client = 'Alice';
+
+--user2:
+update compte set solde = 5000 where client = 'Alice';
+
+--user1:
+commit;
+
+--user2:
+commit;
+
+Pour changer de mode, il faut taper ces commandes avant chaque begin:
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ ;
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE ;
+
+
+drouichi=*> SET TRANSACTION ISOLATION LEVEL REPEATABLE READ ;
+SET
+drouichi=*> update compte set solde = 5000 where client = 'Alice';
+ERROR:  could not serialize access due to concurrent update
+drouichi=!> commit;
+ROLLBACK
+
+drouichi=*> SET TRANSACTION ISOLATION LEVEL SERIALIZABLE ;
+SET
+drouichi=*> update compte set solde = 5000 where client = 'Alice';
+ERROR:  could not serialize access due to concurrent update
+drouichi=!> commit;
+ROLLBACK
+
+
+
+
+
+

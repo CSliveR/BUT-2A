@@ -1,0 +1,40 @@
+Ilyès Drouiche - Ecole Des Loustics
+-----------------------------------------
+
+Explication de l'application
+-----------------------------------
+
+L'application est constitué de 4 mini-jeux:
+
+-Le premier est un jeu de pierre-feu-ciseaux (shifoumi) contre l'ordinateur. Le score obtenu lorsque l'on quitte le jeu est la différence du nombre de victoires et du nombre de défaites.
+
+-Le second mini-jeu est un jeu du pendu où les mots sont choisis aléatoirement parmi près de 1000 mots en français. 8 erreurs au maximum sont autorisées et les lettres essayées sont affichées au fur et à mesure. Le score obtenu à la fin de la partie est égal aux nombres de lettres trouvées.
+
+-Le troisième mini-jeu consiste à donner le nom en anglais des drapeaux affichées à l'écran. Il y a 20 drapeaux de pays différents et 10 sont choisis aléatoirement pour une partie. Le score est égal au nombre de bonnes réponses et il est cumulatif (augmente au fil des parties)
+
+-Le quatrième mini-jeu est un jeu d'opérations mathématiques. Les 4 grandes opérations mathématiques (addition, soustraction, multiplication et division) sont couvertes dans 3 niveaux de difficulté. Il y a la possibilité de mélanger les opérations mais cette option n'a un sens que pour l'addition et la multiplication au niveau 1 
+
+Addition niveau 1: additions des doubles (1+1, 2+2, … ,10+10)
+Addition niveau 2: additions avec des nombres aléatoires allant jusqu'à 10
+Addition niveau 3: additions avec des nombres aléatoires allant jusqu'à 100
+
+Soustraction niveau 1: soustractions avec un résultat uniquement positif
+Soustraction niveau 2: soustractions avec un résultat pouvant être négatif
+Soustraction niveau 3: soustractions avec des nombres aléatoires allant jusqu'à 100 et régle de signe
+
+Multiplication niveau 1: calcul sur une table de multiplications que l'on peut choisir à l'avance
+Multiplication niveau 2: multiplications de nombres aléatoires allant jusqu'à 10
+Multiplication niveau 3: multiplications de nombres aléatoires allant jusqu'à 100
+
+Division: le dividende peut aller jusqu'à 100, le diviseur peut aller jusqu'à 10
+Division niveau 1: divisions entières (division avec un reste toujours égal à 0)
+Division niveau 2: divisions avec un reste non nul que l'on peut sélectionner à l'aide d'un NumberPicker allant de 0 jusqu'au diviseur-1
+Division niveau 3: Identique au niveau 2 mais sans l'aide du NumberPickers
+
+
+
+
+
+
+ 
+

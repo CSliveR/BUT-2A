@@ -1,0 +1,223 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TableLayout
+        android:id="@+id/tableLayoutStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:stretchColumns="1">
+
+        <!-- Première ligne d'en-têtes -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Mini-jeu"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Score le plus récent"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <!-- Ligne Shifoumi -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Shifoumi" />
+
+            <TextView
+                android:id="@+id/shifoumi_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="0" />
+        </TableRow>
+
+        <!-- Ligne Addition -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Addition" />
+
+            <TextView
+                android:id="@+id/addition_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="0" />
+        </TableRow>
+
+        <!-- Ligne Soustraction -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Soustraction" />
+
+            <TextView
+                android:id="@+id/soustraction_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="0" />
+        </TableRow>
+
+        <!-- Ligne Multiplication -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Multiplication" />
+
+            <TextView
+                android:id="@+id/multiplication_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="0" />
+        </TableRow>
+
+        <!-- Ligne Division -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Division" />
+
+            <TextView
+                android:id="@+id/division_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="0" />
+        </TableRow>
+
+        <!-- Ligne Pendu -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Pendu" />
+
+            <TextView
+                android:id="@+id/pendu_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="0" />
+        </TableRow>
+
+        <!-- Ligne Drapeaux -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Drapeaux du monde" />
+
+            <TextView
+                android:id="@+id/flagGuesser_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="0" />
+        </TableRow>
+    </TableLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

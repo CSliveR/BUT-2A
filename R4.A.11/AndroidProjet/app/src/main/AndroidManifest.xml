@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidProjet"
+        tools:targetApi="31">
+        <activity
+            android:name=".MotherActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".StatsActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.geography.FlagsGuesserActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.pendu.PenduActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.math.MultiplicationNPActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.math.ErreurActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.math.FelicitationActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.math.OperationActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.math.MathActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".gamesActs.shifoumi.ShifoumiActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".UsersAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".AccountActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".AddUserActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

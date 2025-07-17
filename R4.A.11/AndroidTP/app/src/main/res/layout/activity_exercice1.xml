@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Exercice1Activity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/exercice1_text" />
+
+    <EditText
+        android:id="@+id/exercice1_prenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/exercice1_validate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exercice1_textButton"
+        android:onClick="exercice1_valider"/>
+
+    <TextView
+        android:id="@+id/exercice1_hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exercice1_valider"
+        android:gravity="center"/>
+</LinearLayout>

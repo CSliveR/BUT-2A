@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Android-TP</string>
+    <string name="exercice1">Exercice 1</string>
+    <string name="exercice1_text">Ecrire votre prénom et valider</string>
+    <string name="exercice1_textButton">VALIDER</string>
+    <string name="exercice1_valider" />
+
+    <string name="exercice2">Exercice 2</string>
+    <string name="exercice2_question">Quelle a été la différence de buts lors du match de football opposant l\'équipe enseignante du département informatique à l\'équipe étudiante ?</string>
+    <string name="exercice2_firstChoice">+10 pour les enseignants</string>
+    <string name="exercice2_secondChoice">0 match nul</string>
+    <string name="exercice2_lastChoice">+1 pour les étudiants</string>
+    <string name="exercice2_textButton">VALIDER MA RÉPONSE</string>
+    <string name="exercice2_valider">Choisir une réponse puis valider</string>
+
+    <string name="exercice3">Exercice 3</string>
+    <string name="exercice3_victoire">Victoire</string>
+    <string name="exercice3_defaite">Défaite</string>
+    <string name="exercice3_egalite">Egalité</string>
+
+    <string name="exercice4">Exercice 4</string>
+    <string name="exercice4_text">Ecris ton prénom</string>
+    <string name="exercice4_changePrenom">CHANGER DE PRENOM</string>
+    <string name="exercice4_AutreExo">CHOISIR UN AUTRE EXERCICE</string>
+    <string name="hello_text">Hello %1$s !</string> <!---%1$s étant un paramètre de type String -->
+
+    <string name="exercice5">Exercice 5</string>
+    <string name="exercice5_erreur">ERREUR(S) !!</string>
+    <string name="exercice5_nbErreur">Nombre d\'erreurs:</string>
+    <string name="exercice5_felicitation">FELICITATIONS !!</string>
+    <string name="exercice5_corriger">CORRIGER MES REPONSES</string>
+    <string name="exercice5_autreTable">CHOISIR UNE AUTRE TABLE</string>
+
+</resources>

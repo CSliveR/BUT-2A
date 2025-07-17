@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Exercice3Activity">
+
+    <TextView
+        android:id="@+id/exercice3_mainOrdi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Main de l\'ordinateur"
+        android:padding="16dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/exercice3_layoutMainOrdi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/exercice3_mainOrdi">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/papier"
+            android:tag="exercice3_imgPapier"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caillou"
+            android:tag="exercice3_imgCaillou"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ciseaux"
+            android:tag="exercice3_imgCiseaux"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/exercice3_resulatView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exercice3_layoutMainOrdi"
+        android:focusedSearchResultHighlightColor="@color/design_default_color_error"
+        android:gravity="center"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/exercice3_choisirMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choisir une main"
+        android:gravity="center"
+        android:layout_below="@+id/exercice3_resulatView"/>
+
+    <LinearLayout
+        android:id="@+id/exercice3_layoutMainJoueur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/exercice3_choisirMain">
+        <ImageView
+            android:tag="exercice3_imgPapier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/papier" />
+
+        <ImageView
+            android:tag="exercice3_imgCaillou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caillou"/>
+
+        <ImageView
+            android:tag="exercice3_imgCiseaux"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ciseaux"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/exercice3_layoutStatistic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/exercice3_layoutMainJoueur">
+        <!-- Ligne Victoires -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre de victoires :" />
+            <TextView
+                android:tag="exercice3_nbVictoires"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+
+        <!-- Ligne Défaites -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre de défaites :" />
+            <TextView
+                android:tag="exercice3_nbDefaites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+
+        <!-- Ligne Égalités -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre d'égalités :" />
+            <TextView
+                android:tag="exercice3_nbEgalites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

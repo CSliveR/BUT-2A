@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire des Signes Astrologiques Chinois</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Signes Astrologiques Chinois</h1>
+    </header>
+    <main>
+        <p>
+            Ce site a l'objectif pédagogique de montrer l'utilisation d'un formulaire.
+            Il vous propose de vous calculer votre signe
+            dans l'astrologie chinoise.
+        </p>
+        <section>
+            <form action="submit_form.php" method="get">
+                <h2>Découvrez Votre Signe</h2>
+
+                <fieldset>
+                    <legend>Votre nom</legend>
+                    <input type="text" id="nom" name="nom" required>
+                    <legend>Votre âge à la fin de cette année (entre 18 et 120)</legend>
+                    <input type="number" id="age" name="age" min=18 max=120 required>
+                    <legend>Votre genre</legend>
+                    <label>
+                        <input type="radio" id="genre" name="genre" value="femme" required> femme
+                    </label>
+                    <label>
+                        <input type="radio" name="genre" id="genre" value="homme" required> homme
+                    </label>
+                    <label>
+                        <input type="radio" name="genre" id="genre" value="autre" required> autre
+                    </label>
+                </fieldset>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Votre Site Astrologique</p>
+    </footer>
+</body>
+
+</html>

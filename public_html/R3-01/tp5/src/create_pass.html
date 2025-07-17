@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create new password</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="validation.js"></script>
+</head>
+
+<body>
+    <section>
+        <h2>Select a password</h2>
+
+        <form action="set_passwd.php" method="post">
+            <label for="firstPasswd">Type your password:</label>
+            <input type="password" id="firstPasswd" name="firstPasswd" placeholder="Password">
+            <label for="confirmPasswd">Retype your password:</label>
+            <input type="password" id="confirmPasswd" name="confirmPasswd" placeholder="Password">
+
+            <button type="submit" id="setPasswd" onsubmit="return validateForm()">Set new password</button>
+            
+        </form>
+        <p>Your password must follow at least the folllowing rules:</p>
+        <ul>
+            <li>at least 8 characters.</li>
+            <li>includes a digit.</li>
+            <li>includes upper and lower case.</li>
+        </ul>
+    </section>
+
+
+</body>
+
+</html>

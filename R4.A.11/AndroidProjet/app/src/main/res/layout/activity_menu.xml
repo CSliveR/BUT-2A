@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AddUserActivity">
+
+    <Button
+        android:id="@+id/stats_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Vos statistiques" />
+
+    <GridLayout
+        android:id="@+id/grid_games"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:padding="16dp"
+        android:layout_below="@id/stats_button">
+
+        <ImageView
+            android:id="@+id/image_shifoumi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:src="@drawable/shifoumi"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:id="@+id/image_math"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:src="@drawable/operations"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:id="@+id/image_pendu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:src="@drawable/pendu"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:id="@+id/image_geography"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:src="@drawable/geographie"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"/>
+    </GridLayout>
+</RelativeLayout>
