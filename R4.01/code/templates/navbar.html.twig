@@ -1,0 +1,82 @@
+{% set localeCourante = app.request.attributes.get('_locale') %}
+{% set routeActuelle = app.request.attributes.get('_route') %}
+{% set routeParams = app.request.attributes.get('_route_params') %}
+{# barre de navigation  #}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href="{# TODO #}{{ path("app_default_index") }}">
+		<i class="fas fa-home"></i>
+		{% trans %}templates.navbar.acceuil{% endtrans %}
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{# TODO #}{{ path("app_boutique") }}">
+					<i class="fas fa-store"></i>
+					{% trans %}templates.navbar.boutique{% endtrans %}
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{# TODO #}{{ path('app_default_contact') }}">
+					<i class="fas fa-comments"></i>
+					{% trans %}templates.navbar.contact{% endtrans %}
+				</a>
+			</li>
+			{# TODO : ajouter au fil des TPs les autres éléments du menu #}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('app_panier_index') }}">
+					<i class="fas fa-shopping-cart"></i>
+					{{ render(controller('App\\Controller\\PanierController::nombreProduits')) }}
+					{% trans %}template.navbar.produits{% endtrans %}
+				</a>
+			</li>
+			<li class="nav-item dropdown">
+					<span class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user"></i>{% if is_granted('ROLE_CLIENT') %} {{ app.user.prenom }} {% else %} Usager {% endif %}</span>
+				<div class="dropdown-menu" aria-labelledby="dropdown02" style="min-width: 5rem;">
+					<a class="dropdown-item {% if is_granted('ROLE_CLIENT') %} disabled {% endif %} " href="{{ path('app_login') }}">Connexion</a>
+					<a class="dropdown-item {% if is_granted('ROLE_CLIENT') %} disabled {% endif %} " href="{{ path('app_usager_new') }}">Inscription</a>
+					<a class="dropdown-item {% if not is_granted('ROLE_CLIENT') %} disabled {% endif %} " href="{{ path('app_usager_index') }}">Mon compte</a>
+					<a class="dropdown-item {% if not is_granted('ROLE_CLIENT') %} disabled {% endif %} " href="{{ path('app_usager_commandes') }}">Mes commandes</a>
+					<a class="dropdown-item {% if not is_granted('ROLE_CLIENT') %} disabled {% endif %} " href="{{ path('app_logout') }}">Déconnexion</a>
+					<a class="dropdown-item {% if not is_granted('ROLE_ADMIN') %} disabled {% endif %} " href="{{ path('app_logout') }}">CRUD Categorie</a>
+					<a class="dropdown-item {% if not is_granted('ROLE_ADMIN') %} disabled {% endif %} " href="{{ path('app_logout') }}">CRUD Produit</a>
+				</div>
+			</li>
+		</ul>
+		<!-- Début champ de recherche -->
+		{# TODO #}
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" id="searchString" type="text" placeholder="{% trans %}boutique.index.placeholder{% endtrans %}" aria-label="Search">
+			<button class="btn btn-secondary my-2 my-sm-0" id="searchButton">
+				<i class="fas fa-search"></i>
+			</button>
+		</form>
+		<!-- Fin champ de recherche -->
+		<!-- Début menu des monnaies -->
+		{# TODO #}
+		<!-- Fin menu des monnaies -->
+		<!-- Début menu des langues -->
+		{# TODO #}
+		<ul class="navbar-nav my-0">
+			<li class="nav-item dropdown">
+				<span class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="" alt="{{ localeCourante }}">
+				</span>
+				<div class="dropdown-menu" aria-labelledby="dropdown01" style="min-width: 5rem;">
+				{% for uneLocale in supported_locales | split('|') %}
+					{% set routeParams = routeParams | merge({'_locale': uneLocale }) %}
+					{% if uneLocale != localeCourante %}
+						<a class="dropdown-item" href="{{ path(routeActuelle, routeParams) }}">
+							<img src="" alt="{{ uneLocale }}">
+						</a>
+					{% endif %}
+				{% endfor %}
+				</div>
+			</li>
+		</ul>
+		<!-- Fin Menu des langues -->
+	</div>
+</nav>

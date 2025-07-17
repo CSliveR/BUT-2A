@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Rayon {{ categorie.libelle }}
+{% endblock %}
+
+{% block body %}
+    <div class="card col-md-12">
+        <div class="card-header">
+            <h3>
+                <a class="btn-back text-secondary" href="{{ path('app_boutique') }}">
+                    <i class="fas fa-x fa-arrow-circle-left"></i>
+                </a>
+                <i class="fas fa-store"></i>
+                Rayon <b>{{ categorie.libelle }}</b>
+                <span class="badge badge-pill badge-info">
+                     {% if produits | length < 10 %}
+                         0{{ produits | length }}
+                     {% else %}
+                         {{ produits | length }}
+                     {% endif %}
+                </span>
+                produit(s) disponible(s)
+            </h3>
+        </div>
+    </div>
+    <div class="card-body row">
+        {% for produit in produits %}
+        <div class="col-md-4">
+            <div class="card clickable" onclick="location = '{{ path('app_boutique_detailsProduit', {'idProduit' : produit.id,}) }}'"
+                 data-toggle="tooltip" title="Ajouter <b>{{ produit.libelle }}</b> à mon panier" data-placement="bottom"
+                 data-html="true" data-container="body">
+                <img src="/{{ produit.visuel }}" class="card-img-produit" alt="{{ produit.libelle }}">x
+                <div class="card-body">
+                    <h4 class="card-title">{{ produit.libelle }}</h4>
+                    <p class="card-text">
+                        <i>{{ produit.texte }}</i>
+                    </p>
+                    <h2>
+				<span class="badge badge-primary">
+					<i class="fas fa-cart-plus"></i>&nbsp;&nbsp;
+                    {{ produit.prix }}
+				</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
