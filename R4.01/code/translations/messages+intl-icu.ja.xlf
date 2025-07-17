@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="ja" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="SHq442S" resname="boutique.index.titre">
+        <source>boutique.index.titre</source>
+        <target>ショップ</target>
+      </trans-unit>
+      <trans-unit id="3Xs_gKO" resname="boutique.index.rayons">
+        <source>boutique.index.rayons</source>
+        <target>提供されるセクション</target>
+      </trans-unit>
+      <trans-unit id="5W.dbym" resname="boutique.index.categorie_libelle">
+        <source>boutique.index.categorie_libelle</source>
+        <target>__boutique.index.categorie_libelle</target>
+      </trans-unit>
+      <trans-unit id="DfGFPKu" resname="boutique.index.categorie_texte">
+        <source>boutique.index.categorie_texte</source>
+        <target>__boutique.index.categorie_texte</target>
+      </trans-unit>
+      <trans-unit id="UbYUDT1" resname="default.contact.titre">
+        <source>default.contact.titre</source>
+        <target>連絡を取る</target>
+      </trans-unit>
+      <trans-unit id="TJO4slQ" resname="default.contact.nom_formation">
+        <source>default.contact.nom_formation</source>
+        <target>BUT INFO セメスター 4</target>
+      </trans-unit>
+      <trans-unit id="RKEjWZL" resname="default.contact.nom_module">
+        <source>default.contact.nom_module</source>
+        <target>モジュール R4.01</target>
+      </trans-unit>
+      <trans-unit id="x9Xjcdt" resname="default.contact.nom_auteur">
+        <source>default.contact.nom_auteur</source>
+        <target>Il. Drouiche, 2025</target>
+      </trans-unit>
+      <trans-unit id="UuGyePH" resname="default.index.titre">
+        <source>default.index.titre</source>
+        <target>ショップ R4.01</target>
+      </trans-unit>
+      <trans-unit id="ae636OK" resname="default.index.texte">
+        <source>default.index.texte</source>
+        <target>ここでは販売していません、学ぶためのものです...</target>
+      </trans-unit>
+      <trans-unit id="7h57aab" resname="templates.navbar.acceuil">
+        <source>templates.navbar.acceuil</source>
+        <target>ホームショップ</target>
+      </trans-unit>
+      <trans-unit id="0z7fGq8" resname="templates.navbar.boutique">
+        <source>templates.navbar.boutique</source>
+        <target>ショップ</target>
+      </trans-unit>
+      <trans-unit id="ZlGbaaT" resname="templates.navbar.contact">
+        <source>templates.navbar.contact</source>
+        <target>連絡先</target>
+      </trans-unit>
+      <trans-unit id="VOLqKdk" resname="boutique.index.placeholder">
+        <source>boutique.index.placeholder</source>
+        <target>製品を検索...</target>
+      </trans-unit>
+      <trans-unit id="qmd1Owf" resname="template.navbar.produits">
+        <source>template.navbar.produits</source>
+        <target>製品</target>
+      </trans-unit>
+      <trans-unit id="KRx2tgU" resname="security.login.title">
+        <source>security.login.title</source>
+        <target>ログイン</target>
+      </trans-unit>
+      <trans-unit id="tNRxCiX" resname="security.login.logged_in_as">
+        <source>security.login.logged_in_as</source>
+        <target>あなたは次のようにログインしています</target>
+      </trans-unit>
+      <trans-unit id="ljPoG31" resname="security.login.logout">
+        <source>security.login.logout</source>
+        <target>ログアウト</target>
+      </trans-unit>
+      <trans-unit id="w5eey1G" resname="security.login.sign_in">
+        <source>security.login.sign_in</source>
+        <target>サインイン</target>
+      </trans-unit>
+      <trans-unit id="I1ccaiS" resname="security.login.email">
+        <source>security.login.email</source>
+        <target>メール</target>
+      </trans-unit>
+      <trans-unit id="TT3C_o8" resname="security.login.password">
+        <source>security.login.password</source>
+        <target>パスワード</target>
+      </trans-unit>
+      <trans-unit id="nm55jA_" resname="security.login.sign_in_button">
+        <source>security.login.sign_in_button</source>
+        <target>サインイン</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

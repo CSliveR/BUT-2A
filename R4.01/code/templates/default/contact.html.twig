@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{# TODO #}
+{% block title %}
+    Contact
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="card col-md-6 offset-3">
+        <div class="card-header">
+            <a class="btn-back text-secondary" href="{{ path('app_default_index') }}">
+                <i class="fas fa-2x fa-arrow-alt-circle-left"></i>
+            </a>
+        </div>
+        <h3>
+            <i class="fas fa-comments"></i>
+            {% trans %}default.contact.titre{% endtrans %}
+        </h3>
+        <div class="card-body">
+            <div class="card clickable" onclick="window.open('https://iut2.univ-grenoble-alpes.fr/l-iut2/qui-sommes-nous-/les-departements-de-l-iut2/informatique-info--149104.kjsp')">
+                <img class=card-img" src="https://iut2-dg-scolarite.iut2.univ-grenoble-alpes.fr/info/R401/images/iut2_info.png" alt="logo IUT2">
+                <h1 class="card-title">
+                    <i class="fas fa-code"></i>
+                    {% trans %}default.contact.nom_formation{% endtrans %}
+                </h1>
+                <h2 class="card-title">
+                    <i class="fab fa-symfony"></i>
+                    {% trans %}default.contact.nom_module{% endtrans %}
+                </h2>
+                <p>
+                    <i class="far fa-copyright"></i>
+                    {% trans %}default.contact.nom_auteur{% endtrans %}
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
