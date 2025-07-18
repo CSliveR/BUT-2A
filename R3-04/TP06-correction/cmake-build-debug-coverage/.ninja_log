@@ -1,8 +1,0 @@
-# ninja log v6
-63	1609	7514592036683606	CMakeFiles/salarieTest.dir/Salarie.cpp.obj	2623379828efe805
-27	2115	7514592036324387	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	e02423e4e8685eff
-39	3070	7514592036454421	CMakeFiles/salarieTest.dir/salarieTest.cpp.obj	b46f0bb9215fbdcb
-11	11784	7514592036163711	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	ac3234f1e7af720
-11786	15119	7514592153913230	lib/libgtest.a	9d3614405dd85dc8
-15119	15188	7514592187241723	lib/libgtest_main.a	c475ed72d6e47ecd
-15188	18421	7514592187936941	salarieTest.exe	ad4e159e9ad43ff8
