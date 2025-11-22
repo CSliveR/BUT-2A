@@ -20,6 +20,7 @@ The number **before the dot** indicates the **semester number**, and the number 
 For example:
 
 - `R4.01` refers to resource 01 of semester 4.
+- `S3` refers to SAE of semester 3.
 
 ## List of Resources Referenced in This Repository
 
@@ -35,3 +36,8 @@ For example:
 - **R4.08**: Virtualization
 - **R4.10**: Web add-on
 - **R4.11**: Development for mobile application
+- **S3 - SAE**: https://github.com/CSliveR/Marapont
+
+## Docs 
+All the documents related to the resources and projects are available at the following link: [BUT-2A](https://drive.google.com/drive/folders/1lIJ2_DVEdG94abM1GR4Kst1Kfvi3ch_4)
+
